@@ -274,14 +274,31 @@ function marca(i, v){
   if(isCh(i)){ const m = nSteps(i), k = stepsOk(i, v); if(v.every(x => x < 0)) return "-"; return k === m ? "✓" : (k === 0 ? "✗" : k + "/" + m); }
   return v < 0 ? "-" : (v === ANS[i] ? "✓" : "✗");
 }
+/* Todo lo que la prueba recoge, en el orden de las columnas que arma el Code.gs a partir de "pasos":
+   lista, equipo, horas, minutos; opción marcada, acierto y segundos por ítem; pasos correctos;
+   y por cada paso la opción marcada, si fue correcta y sus segundos. */
+function detalleDe(r){
+  const n = CFG.items.length, CH = [];
+  for(let i = 0; i < n; i++) if(isCh(i)) CH.push(i);
+  const seg = (a, k) => (a && typeof a[k] === "number") ? a[k] : "";
+  let out = [r.lista || "", r.equipo || "", r.inicio || "", r.fin || "", r.minutos];
+  out = out.concat(r.resp.map((v, i) => ansTxt(i, v)), r.resp.map((v, i) => hit(i, v)), r.resp.map((_, i) => seg(r.t, i)), CH.map(i => stepsOk(i, r.resp[i])));
+  CH.forEach(i => r.resp[i].forEach((v, j) => { out.push(v < 0 ? "" : L[v], v === ANS[i][j] ? 1 : 0, seg(r.ts && r.ts[i], j)); }));
+  return out;
+}
+function fechaHoja(r){
+  if(r.fechaIso) return r.fechaIso;
+  const m = String(r.fecha || "").match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  return m ? m[3] + "-" + m[2].padStart(2, "0") + "-" + m[1].padStart(2, "0") : (r.fecha || "");
+}
 function parametros(r){
   use(r.prueba);
   const n = CFG.items.length, c = r.resp.reduce((s, v, i) => s + hit(i, v), 0), correctas = Math.round(c * 1000) / 1000;
   const reg = Object.assign({}, r); delete reg.uid;
   const p = {asignatura: ASIG[r.prueba], accion: "registrar", nombre: r.nombre, curso: r.grupo, nivel: r.aplicacion,
     correctas, incorrectas: Math.round((n - c) * 1000) / 1000, porcentaje: Math.round(c / n * 100),
-    nota: Math.round(c / n * 5 * 10) / 10, fecha: r.fechaIso || r.fecha, fingerprint: r.fingerprint || "",
-    lista: String(r.lista || ""), minutos: r.minutos, equipo: String(r.equipo || ""), id: uidOf(r), datos: reg};
+    nota: Math.round(c / n * 5 * 10) / 10, fecha: fechaHoja(r), fingerprint: r.fingerprint || "",
+    pasos: CFG.items.map(it => it.steps ? it.steps.length : 0).join(""), detalle: detalleDe(r), id: uidOf(r), datos: reg};
   r.resp.forEach((v, i) => { p["p" + (i + 1)] = marca(i, v); });
   restore();
   return p;
