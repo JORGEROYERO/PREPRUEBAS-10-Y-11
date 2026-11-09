@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pruebas de décimo y once en línea: razones trigonométricas y derivadas</title>
+<style>
+:root{--bg:#f6f5f1;--card:#ffffff;--ink:#1d1f23;--mute:#5d6470;--line:#d9dbe0;--acc:#1f497d;--acc2:#e8eef6;--ok:#2e7d4f;--warn:#a5361d}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#16181c;--card:#1f2228;--ink:#e9eaed;--mute:#a3a9b4;--line:#353a43;--acc:#8fb3e3;--acc2:#24324a;--ok:#6cc495;--warn:#f08a6e}}
+:root[data-theme="dark"]{--bg:#16181c;--card:#1f2228;--ink:#e9eaed;--mute:#a3a9b4;--line:#353a43;--acc:#8fb3e3;--acc2:#24324a;--ok:#6cc495;--warn:#f08a6e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 Arial,Helvetica,sans-serif}
+.wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px}
+header{display:flex;gap:14px;align-items:center}
+header img{width:64px;height:64px;border-radius:50%;flex:none}
+header h1{font-size:22px;margin:0 0 4px;color:var(--acc)}
+header p{margin:0;color:var(--mute);font-size:15px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:16px 0}
+label.f{display:block;font-weight:bold;margin:10px 0 4px}
+input[type=text],input[type=password],select{width:100%;font:inherit;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+button{font:inherit;padding:10px 18px;border-radius:8px;border:1px solid var(--acc);background:var(--acc);color:var(--card);cursor:pointer}
+button.sec{background:transparent;color:var(--acc)}
+button.danger{border-color:var(--warn);background:transparent;color:var(--warn)}
+.ctx{background:var(--acc2);border-radius:8px;padding:12px;margin:0 0 12px}
+.ctx table{border-collapse:collapse;margin-top:8px;background:var(--card)}
+.ctx td,.ctx th{border:1px solid var(--line);padding:4px 12px;text-align:center}
+.q p.stem{margin:0 0 10px;font-weight:bold}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border:1px solid var(--line);border-radius:8px;margin:6px 0;cursor:pointer}
+.opt input{margin-top:5px}
+.opt:has(input:checked){border-color:var(--acc);background:var(--acc2)}
+.err{color:var(--warn);font-weight:bold}
+.okmsg{color:var(--ok);font-weight:bold;font-size:20px}
+.hidden{display:none}
+.done-step{border-left:4px solid var(--line);padding:4px 12px;margin:8px 0;color:var(--mute)}
+.done-step p{margin:2px 0}
+.cur-step{border-left:4px solid var(--acc);padding:4px 12px;margin:12px 0}
+.given{background:var(--acc2);border-radius:8px;padding:10px 14px;margin:8px 0 12px;font-size:18px;line-height:1.7}
+.qnum{margin:0 0 6px;color:var(--acc);font-weight:bold;font-size:15px}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+footer{margin-top:30px;text-align:center}
+footer button{background:transparent;border:1px solid var(--line);color:var(--acc);font-size:15px;padding:8px 16px}
+.warnbox{background:var(--acc2);border:1px solid var(--warn);color:var(--ink);border-radius:8px;padding:10px;margin-top:10px}
+.stat{font-size:15px;color:var(--mute)}
+pre{white-space:pre-wrap;font-size:13px;max-height:240px;overflow:auto;background:var(--acc2);padding:8px;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<img src="data:image/jpeg;base64,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" alt="Escudo de la institución">
+<div>
+<h1 id="ttl">Pruebas de décimo y once: razones trigonométricas y derivadas</h1>
+<p id="sub"></p>
+</div>
+</header>
+
+<section id="start" class="card">
+<p>Selecciona tu grupo: la página abre la prueba de tu grado. Décimo (1001 y 1002) presenta razones trigonométricas y once (1101 y 1102) presenta reglas básicas de derivación.</p>
+<p>Responde solo. Las preguntas aparecen una por una y no se puede volver a una pregunta anterior. Algunas preguntas se responden por pasos: eliges un paso, lo confirmas y aparece el siguiente. La prueba registra el tiempo de cada pregunta y no muestra la calificación.</p>
+<label class="f" for="grupo">Grupo</label>
+<select id="grupo"><option value="">Selecciona tu grupo</option><optgroup label="Décimo: razones trigonométricas"><option>1001</option><option>1002</option></optgroup><optgroup label="Once: reglas básicas de derivación"><option>1101</option><option>1102</option></optgroup></select>
+<p id="which" class="stat"></p>
+<label class="f" for="nombre">Nombre</label>
+<select id="nombre" disabled><option value="">Primero selecciona tu grupo</option></select>
+<input type="text" id="nombreManual" class="hidden" autocomplete="off" placeholder="Escribe tu nombre completo (apellidos y nombres)" style="margin-top:8px">
+<p id="startErr" class="err"></p>
+<p id="netMsg" class="warnbox hidden"></p>
+<div class="row"><button id="btnStart">Comenzar</button></div>
+</section>
+
+<section id="test" class="hidden">
+<div class="card q">
+<div id="qbox"></div>
+<p id="qErr" class="err"></p>
+<div class="row"><button id="btnNextQ">Siguiente pregunta</button></div>
+</div>
+</section>
+
+<section id="done" class="card hidden">
+<p class="okmsg">Respuestas guardadas.</p>
+<p>Gracias. Avisa al docente que terminaste.</p>
+<p id="sendMsg" class="stat">Enviando tus respuestas a la hoja del docente...</p>
+<div class="row"><button id="btnResend" class="sec">Registrar de nuevo</button><button id="btnNext" class="sec">Siguiente estudiante</button></div>
+</section>
+
+<section id="panel" class="card hidden">
+<h2 style="margin-top:0">Panel del docente</h2>
+<div id="pinBox">
+<label class="f" for="pin" id="pinLabel">Clave del docente</label>
+<input type="password" id="pin" autocomplete="off">
+<p id="pinErr" class="err"></p>
+<div class="row"><button id="btnPin">Entrar</button><button class="sec" id="btnClose1">Cerrar</button></div>
+</div>
+<div id="panelBody" class="hidden">
+<label class="f" for="equipo">Número del equipo</label>
+<input type="text" id="equipo" placeholder="Ejemplo: 3">
+<label class="f" for="aplic">Aplicación</label>
+<select id="aplic"><option value="Preprueba">Preprueba</option><option value="Posprueba">Posprueba</option><option value="Piloto">Prueba piloto</option></select>
+<div class="row"><button id="btnSave">Guardar ajustes</button></div>
+<p class="stat" id="stat"></p>
+<p id="dlMsg" class="warnbox hidden"></p>
+<div class="row">
+<button type="button" id="btnXl_decimo_trigonometria">Descargar Excel de décimo (trigonometría)</button>
+<button type="button" id="btnXl_once_derivadas">Descargar Excel de once (derivadas)</button>
+<button class="sec" id="btnClose2">Volver a la prueba</button>
+</div>
+<p class="stat">Cada botón descarga un archivo de Excel con una sola prueba, con el mismo nombre de archivo y las mismas hojas que daban las pruebas por separado. El archivo trae ocho hojas con tablas: Respuestas (una fila por estudiante con la opción marcada, el acierto y los segundos de cada ítem), Resumen por grupo, Análisis (porcentaje de acierto por sesión, contenido, tipo de tarea, pensamiento, DBA, estándar, proceso y competencia), Matriz de ítems, Por ítem, Tiempo por ítem, Por paso y Detalle de pasos (una fila por estudiante, ítem y paso, con la opción marcada y los segundos). En las preguntas por pasos cada paso se califica por separado y el ítem vale la proporción de pasos correctos; por ejemplo, 3 de 4 pasos correctos dan 0,75. Para comparar preprueba y posprueba de todos los equipos usa el archivo Consolidado_pruebas_IETAL.html.</p>
+<details><summary class="stat">Vista previa de los registros (texto)</summary><pre id="prev"></pre></details>
+<h3 style="margin:24px 0 4px">Base de datos y respaldos</h3>
+<p class="stat" id="dbStat"></p>
+<div class="row"><button type="button" id="btnBk">Descargar respaldo (.json)</button><button type="button" class="sec hidden" id="btnRetry">Enviar respuestas pendientes</button></div>
+<label class="f" for="bkFiles">Restaurar o agregar respaldos de este u otros computadores</label>
+<input type="file" id="bkFiles" accept=".json,application/json" multiple>
+<p id="bkMsg" class="warnbox hidden"></p>
+<p class="stat">El respaldo es un archivo .json con todas las respuestas de décimo y de once guardadas en este computador. Puedes elegir varios respaldos a la vez. Al cargarlos se agregan solo los registros que todavía no están y no se borra ni se cambia nada de lo que ya había; un registro que llega dos veces queda una sola vez. Así sirve para restaurar un computador y para reunir en uno solo los respaldos de los demás. La clave del docente no viaja en el respaldo.</p>
+<p class="stat">En la versión en línea los registros se borran directamente en la hoja de Google, eliminando las filas. El botón de abajo solo borra lo guardado en este dispositivo.</p>
+<div class="row" style="margin-top:24px">
+<button class="danger" id="btnClear">Borrar la copia guardada en este dispositivo</button>
+</div>
+<div id="clearBox" class="hidden">
+<p class="err">Esto borra la copia de las pruebas guardada en este dispositivo, incluidas las que todavía no llegan a la hoja de Google. La hoja no cambia. Escribe BORRAR para confirmar.</p>
+<input type="text" id="clearTxt">
+<div class="row"><button class="danger" id="btnClear2">Confirmar borrado</button></div>
+</div>
+</div>
+</section>
+
+<footer><p class="stat">I.E. Técnica Agropecuaria de Luruaco · Docente: Jorge Eduardo Royero</p><button type="button" id="lnkPanel">Panel del docente</button></footer>
+</div>
+
+<script>
+/* Generador de .xlsx sin conexion: tablas de Excel, sin librerias externas */
+const XL = (() => {
+  const enc = new TextEncoder();
+  const CRC = (() => { const t = new Uint32Array(256); for(let n = 0; n < 256; n++){ let c = n; for(let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+  function crc32(b){ let c = 0xFFFFFFFF; for(let i = 0; i < b.length; i++) c = CRC[(c ^ b[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+  function zip(files){
+    const parts = [], central = []; let off = 0;
+    files.forEach(f => {
+      const name = enc.encode(f.name), data = enc.encode(f.text), crc = crc32(data);
+      const h = new DataView(new ArrayBuffer(30));
+      h.setUint32(0, 0x04034b50, true); h.setUint16(4, 20, true); h.setUint16(6, 0x0800, true); h.setUint16(8, 0, true);
+      h.setUint16(10, 0, true); h.setUint16(12, 0x5B21, true); h.setUint32(14, crc, true); h.setUint32(18, data.length, true); h.setUint32(22, data.length, true);
+      h.setUint16(26, name.length, true); h.setUint16(28, 0, true);
+      parts.push(new Uint8Array(h.buffer), name, data);
+      const c = new DataView(new ArrayBuffer(46));
+      c.setUint32(0, 0x02014b50, true); c.setUint16(4, 20, true); c.setUint16(6, 20, true); c.setUint16(8, 0x0800, true); c.setUint16(10, 0, true);
+      c.setUint16(12, 0, true); c.setUint16(14, 0x5B21, true); c.setUint32(16, crc, true); c.setUint32(20, data.length, true); c.setUint32(24, data.length, true);
+      c.setUint16(28, name.length, true); c.setUint32(42, off, true);
+      central.push(new Uint8Array(c.buffer), name);
+      off += 30 + name.length + data.length;
+    });
+    const csize = central.reduce((s, x) => s + x.length, 0);
+    const e = new DataView(new ArrayBuffer(22));
+    e.setUint32(0, 0x06054b50, true); e.setUint16(8, files.length, true); e.setUint16(10, files.length, true); e.setUint32(12, csize, true); e.setUint32(16, off, true);
+    return new Blob(parts.concat(central, [new Uint8Array(e.buffer)]), {type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+  }
+  const x = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  function col(n){ let s = ""; n++; while(n){ const m = (n - 1) % 26; s = String.fromCharCode(65 + m) + s; n = Math.floor((n - 1) / 26); } return s; }
+  /* sheets: [{name, title?, tables:[{name, head:[...], rows:[[...]], fmt:[style per col]}], widths:[...]}] */
+  function build(sheets){
+    const files = [];
+    let tid = 0; const tableFiles = [];
+    const sheetXml = sheets.map((sh, si) => {
+      let r = 1, rowsXml = "", rels = [], tparts = "";
+      if(sh.title){ rowsXml += '<row r="1"><c r="A1" t="inlineStr" s="3"><is><t>' + x(sh.title) + "</t></is></c></row>"; r = 3; }
+      sh.tables.forEach(tb => {
+        const nrow = Math.max(tb.rows.length, 1), r0 = r;
+        rowsXml += '<row r="' + r + '">' + tb.head.map((h, j) => '<c r="' + col(j) + r + '" t="inlineStr" s="4"><is><t>' + x(h) + "</t></is></c>").join("") + "</row>";
+        r++;
+        const body = tb.rows.length ? tb.rows : [tb.head.map(() => "")];
+        body.forEach(row => {
+          rowsXml += '<row r="' + r + '">' + row.map((v, j) => {
+            const ref = col(j) + r, s = (tb.fmt && tb.fmt[j]) || 0;
+            if(v === "" || v === null || v === undefined) return '<c r="' + ref + '" s="' + s + '"/>';
+            if(typeof v === "number" && isFinite(v)) return '<c r="' + ref + '" s="' + s + '"><v>' + v + "</v></c>";
+            return '<c r="' + ref + '" t="inlineStr" s="' + s + '"><is><t xml:space="preserve">' + x(v) + "</t></is></c>";
+          }).join("") + "</row>";
+          r++;
+        });
+        tid++;
+        const ref = "A" + r0 + ":" + col(tb.head.length - 1) + (r0 + nrow);
+        tableFiles.push({n: tid, xml: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<table xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" id="' + tid + '" name="' + tb.name + '" displayName="' + tb.name + '" ref="' + ref + '" totalsRowShown="0"><autoFilter ref="' + ref + '"/><tableColumns count="' + tb.head.length + '">' + tb.head.map((h, j) => '<tableColumn id="' + (j + 1) + '" name="' + x(h) + '"/>').join("") + '</tableColumns><tableStyleInfo name="TableStyleMedium2" showFirstColumn="0" showLastColumn="0" showRowStripes="1" showColumnStripes="0"/></table>'});
+        rels.push(tid);
+        r += 2;
+      });
+      const cols = sh.widths ? "<cols>" + sh.widths.map((w, j) => '<col min="' + (j + 1) + '" max="' + (j + 1) + '" width="' + w + '" customWidth="1"/>').join("") + "</cols>" : "";
+      files.push({name: "xl/worksheets/_rels/sheet" + (si + 1) + ".xml.rels", text: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' + rels.map((t, k) => '<Relationship Id="rT' + (k + 1) + '" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/table" Target="../tables/table' + t + '.xml"/>').join("") + "</Relationships>"});
+      return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheetViews><sheetView workbookViewId="0"' + (si === 0 ? ' tabSelected="1"' : "") + '/></sheetViews>' + cols + "<sheetData>" + rowsXml + '</sheetData><tableParts count="' + rels.length + '">' + rels.map((t, k) => '<tablePart r:id="rT' + (k + 1) + '"/>').join("") + "</tableParts></worksheet>";
+    });
+    sheetXml.forEach((s, i) => files.push({name: "xl/worksheets/sheet" + (i + 1) + ".xml", text: s}));
+    tableFiles.forEach(t => files.push({name: "xl/tables/table" + t.n + ".xml", text: t.xml}));
+    files.push({name: "[Content_Types].xml", text: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>' + sheets.map((_, i) => '<Override PartName="/xl/worksheets/sheet' + (i + 1) + '.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>').join("") + tableFiles.map(t => '<Override PartName="/xl/tables/table' + t.n + '.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.table+xml"/>').join("") + "</Types>"});
+    files.push({name: "_rels/.rels", text: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'});
+    files.push({name: "xl/workbook.xml", text: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>' + sheets.map((s, i) => '<sheet name="' + x(s.name) + '" sheetId="' + (i + 1) + '" r:id="rId' + (i + 1) + '"/>').join("") + "</sheets></workbook>"});
+    files.push({name: "xl/_rels/workbook.xml.rels", text: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' + sheets.map((_, i) => '<Relationship Id="rId' + (i + 1) + '" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet' + (i + 1) + '.xml"/>').join("") + '<Relationship Id="rId' + (sheets.length + 1) + '" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'});
+    files.push({name: "xl/styles.xml", text: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><numFmts count="1"><numFmt numFmtId="164" formatCode="0.0%"/></numFmts><fonts count="3"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="14"/><color rgb="FF1F497D"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font></fonts><fills count="2"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="5"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="2" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/><xf numFmtId="164" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/><xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyFont="1"/><xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyFont="1"/></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>'});
+    return zip(files);
+  }
+  return {build};
+})();
+
+</script>
+<script>
+const TESTS = {"decimo_trigonometria": {"id": "decimo_trigonometria", "k": "WzAsIDMsIFswLCAyXSwgMSwgWzMsIDFdLCAyLCAxLCAwLCBbMywgMSwgMl0sIFswLCAzXSwgMiwgMF0=", "dims": ["Sesión", "Contenido", "Tipo de tarea", "Pensamiento", "DBA", "Evidencia DBA", "Estándar", "Proceso general", "Competencia ICFES", "Evidencia ICFES"], "meta": [{"Sesión": "Sesión 1", "Contenido": "Hipotenusa", "Tipo de tarea": "Concepto", "Pensamiento": "Pensamiento espacial y sistemas geométricos", "DBA": "DBA 4 de 10.° (MEN, 2016, p. 76)", "Evidencia DBA": "Reconoce el significado de las razones trigonométricas en un triángulo rectángulo para ángulos agudos, en particular, seno, coseno y tangente.", "Estándar": "Espacial 8.°-9.°: uso representaciones geométricas para resolver y formular problemas (MEN, 2006, p. 86)", "Proceso general": "Comunicación", "Competencia ICFES": "Interpretación y representación", "Evidencia ICFES": "Da cuenta de las características básicas de la información presentada en diferentes formatos como series, gráficas, tablas y esquemas."}, {"Sesión": "Sesión 1", "Contenido": "Catetos opuesto y adyacente", "Tipo de tarea": "Concepto", "Pensamiento": "Pensamiento espacial y sistemas geométricos", "DBA": "DBA 4 de 10.° (MEN, 2016, p. 76)", "Evidencia DBA": "Reconoce el significado de las razones trigonométricas en un triángulo rectángulo para ángulos agudos, en particular, seno, coseno y tangente.", "Estándar": "Espacial 8.°-9.°: uso representaciones geométricas para resolver y formular problemas (MEN, 2006, p. 86)", "Proceso general": "Comunicación", "Competencia ICFES": "Interpretación y representación", "Evidencia ICFES": "Da cuenta de las características básicas de la información presentada en diferentes formatos como series, gráficas, tablas y esquemas."}, {"Sesión": "Sesión 1", "Contenido": "Seno de un ángulo agudo", "Tipo de tarea": "Cálculo por pasos", "Pensamiento": "Pensamiento espacial y sistemas geométricos", "DBA": "DBA 4 de 10.° (MEN, 2016, p. 76)", "Evidencia DBA": "Reconoce el significado de las razones trigonométricas en un triángulo rectángulo para ángulos agudos, en particular, seno, coseno y tangente.", "Estándar": "Espacial 10.°-11.°: uso argumentos geométricos para resolver y formular problemas (MEN, 2006, p. 88)", "Proceso general": "Formulación, comparación y ejercitación de procedimientos", "Competencia ICFES": "Formulación y ejecución", "Evidencia ICFES": "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática."}, {"Sesión": "Sesión 1", "Contenido": "Coseno de un ángulo agudo", "Tipo de tarea": "Validación de una solución", "Pensamiento": "Pensamiento espacial y sistemas geométricos", "DBA": "DBA 4 de 10.° (MEN, 2016, p. 76)", "Evidencia DBA": "Reconoce el significado de las razones trigonométricas en un triángulo rectángulo para ángulos agudos, en particular, seno, coseno y tangente.", "Estándar": "Espacial 10.°-11.°: uso argumentos geométricos para resolver y formular problemas (MEN, 2006, p. 88)", "Proceso general": "Razonamiento", "Competencia ICFES": "Argumentación", "Evidencia ICFES": "Establece la validez o pertinencia de una solución propuesta a un problema dado."}, {"Sesión": "Sesión 2", "Contenido": "Tangente de un ángulo agudo", "Tipo de tarea": "Cálculo por pasos", "Pensamiento": "Pensamiento espacial y sistemas geométricos", "DBA": "DBA 4 de 10.° (MEN, 2016, p. 76)", "Evidencia DBA": "Reconoce el significado de las razones trigonométricas en un triángulo rectángulo para ángulos agudos, en particular, seno, coseno y tangente.", "Estándar": "Espacial 10.°-11.°: uso argumentos geométricos para resolver y formular problemas (MEN, 2006, p. 88)", "Proceso general": "Formulación, comparación y ejercitación de procedimientos", "Competencia ICFES": "Formulación y ejecución", "Evidencia ICFES": "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática."}, {"Sesión": "Sesión 2", "Contenido": "Elección de la razón trigonométrica", "Tipo de tarea": "Elección de procedimiento", "Pensamiento": "Pensamiento espacial y sistemas geométricos", "DBA": "DBA 4 de 10.° (MEN, 2016, p. 76)", "Evidencia DBA": "Reconoce el significado de las razones trigonométricas en un triángulo rectángulo para ángulos agudos, en particular, seno, coseno y tangente.", "Estándar": "Espacial 10.°-11.°: uso argumentos geométricos para resolver y formular problemas (MEN, 2006, p. 88)", "Proceso general": "Formulación, tratamiento y resolución de problemas", "Competencia ICFES": "Formulación y ejecución", "Evidencia ICFES": "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática."}, {"Sesión": "Sesión 2", "Contenido": "Coseno de un ángulo agudo", "Tipo de tarea": "Cambio de representación", "Pensamiento": "Pensamiento espacial y sistemas geométricos", "DBA": "DBA 4 de 10.° (MEN, 2016, p. 76)", "Evidencia DBA": "Reconoce el significado de las razones trigonométricas en un triángulo rectángulo para ángulos agudos, en particular, seno, coseno y tangente.", "Estándar": "Espacial 8.°-9.°: uso representaciones geométricas para resolver y formular problemas (MEN, 2006, p. 86)", "Proceso general": "Comunicación", "Competencia ICFES": "Interpretación y representación", "Evidencia ICFES": "Transforma la representación de una o más piezas de información."}, {"Sesión": "Sesión 2", "Contenido": "Elección de la razón trigonométrica", "Tipo de tarea": "Validación de un procedimiento", "Pensamiento": "Pensamiento espacial y sistemas geométricos", "DBA": "DBA 4 de 10.° (MEN, 2016, p. 76)", "Evidencia DBA": "Reconoce el significado de las razones trigonométricas en un triángulo rectángulo para ángulos agudos, en particular, seno, coseno y tangente.", "Estándar": "Espacial 10.°-11.°: uso argumentos geométricos para resolver y formular problemas (MEN, 2006, p. 88)", "Proceso general": "Razonamiento", "Competencia ICFES": "Argumentación", "Evidencia ICFES": "Argumenta a favor o en contra de un procedimiento para resolver un problema a la luz de criterios presentados o establecidos."}, {"Sesión": "Sesión 3", "Contenido": "Aplicación del seno: altura", "Tipo de tarea": "Cálculo por pasos", "Pensamiento": "Pensamiento espacial y sistemas geométricos", "DBA": "DBA 4 de 10.° (MEN, 2016, p. 76)", "Evidencia DBA": "Reconoce el significado de las razones trigonométricas en un triángulo rectángulo para ángulos agudos, en particular, seno, coseno y tangente.", "Estándar": "Espacial 10.°-11.°: uso argumentos geométricos para resolver y formular problemas (MEN, 2006, p. 88)", "Proceso general": "Formulación, tratamiento y resolución de problemas", "Competencia ICFES": "Formulación y ejecución", "Evidencia ICFES": "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática."}, {"Sesión": "Sesión 3", "Contenido": "Aplicación de la tangente: altura", "Tipo de tarea": "Cálculo por pasos", "Pensamiento": "Pensamiento espacial y sistemas geométricos", "DBA": "DBA 4 de 10.° (MEN, 2016, p. 76)", "Evidencia DBA": "Reconoce el significado de las razones trigonométricas en un triángulo rectángulo para ángulos agudos, en particular, seno, coseno y tangente.", "Estándar": "Espacial 10.°-11.°: uso argumentos geométricos para resolver y formular problemas (MEN, 2006, p. 88)", "Proceso general": "Formulación, tratamiento y resolución de problemas", "Competencia ICFES": "Formulación y ejecución", "Evidencia ICFES": "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática."}, {"Sesión": "Sesión 3", "Contenido": "Variación del seno con el ángulo", "Tipo de tarea": "Interpretación de una gráfica", "Pensamiento": "Pensamiento espacial y sistemas geométricos", "DBA": "DBA 4 de 10.° (MEN, 2016, p. 76)", "Evidencia DBA": "Reconoce el significado de las razones trigonométricas en un triángulo rectángulo para ángulos agudos, en particular, seno, coseno y tangente.", "Estándar": "Espacial 8.°-9.°: uso representaciones geométricas para resolver y formular problemas (MEN, 2006, p. 86)", "Proceso general": "Comunicación", "Competencia ICFES": "Interpretación y representación", "Evidencia ICFES": "Da cuenta de las características básicas de la información presentada en diferentes formatos como series, gráficas, tablas y esquemas."}, {"Sesión": "Sesión 3", "Contenido": "Valor máximo del seno", "Tipo de tarea": "Validación de una interpretación", "Pensamiento": "Pensamiento espacial y sistemas geométricos", "DBA": "DBA 4 de 10.° (MEN, 2016, p. 76)", "Evidencia DBA": "Reconoce el significado de las razones trigonométricas en un triángulo rectángulo para ángulos agudos, en particular, seno, coseno y tangente.", "Estándar": "Espacial 10.°-11.°: uso argumentos geométricos para resolver y formular problemas (MEN, 2006, p. 88)", "Proceso general": "Razonamiento", "Competencia ICFES": "Argumentación", "Evidencia ICFES": "Plantea afirmaciones que sustentan o refutan una interpretación dada a la información disponible en el marco de la solución de un problema."}], "students": {"1001": [[1, "ACOSTA MENDOZA ESTRELLA ISABEL"], [2, "ALVAREZ GOMEZ ORIANA ALEJANDRA"], [3, "AVILA RAMOS MAURO SMITH"], [4, "BASSA VIZCAINO GLEIDIS PAOLA"], [5, "BELTRAN HURTADO LEANDRO ANTONIO"], [6, "CASTILLO CABALLERO MARIA GABRIELA"], [7, "ESCALANTE MANOTAS BRENDA MILAGRO"], [8, "FORTICH YEPEZ JOSUA DAVID"], [9, "GONZALEZ PEREZ DILAN JOSE"], [10, "JAIME SALAS KAROLAY VANESA"], [11, "JIMENEZ BARRAZA ISMAEL SANTIAGO"], [12, "JIMENEZ BARRAZA JEIRYL CARLOS"], [13, "LIÑAN GONZALEZ ISABELLA DE LA CHIQUINQU"], [14, "MENDOZA VILLANUEVA MAYRON DAVID"], [15, "MORALES ANGULO KATTY YULIETH"], [16, "MUÑOZ CANTILLO YENIFER CAROLINA"], [17, "OÑATE MONTERO JAVITH DARIO"], [18, "OSPINO MELENDEZ VALERIA CAMILA"], [19, "REYES MARRIAGA DANNA NICOL"], [20, "RIVERA HERNANDEZ SILVANA"], [21, "SUAREZ UMBRIA JOSE DAVID"], [22, "VARELA SERPA HOSLAYDYS YAIRES"], [23, "VILLA JIMENEZ JOSETH ALEJANDRO"]], "1002": [[1, "BARRIOS GONZALES JESUS DAVID"], [2, "BARRIOS PRENTH KERLYS MARIA"], [3, "CARRILLO ROA ANDRES FELIPE"], [4, "DE LA HOZ ARIZA SHADIA VALENTINA"], [5, "FIGUEREDO SANCHEZ MARLENIS"], [6, "FONTALVO PACHECO JESUS DAVID"], [7, "FRANCO RUIZ JHANS ROBERT"], [8, "GARCIA ALCAZAR STIVEN JOSE"], [9, "GONZALEZ HERNANDEZ YURIANA"], [10, "GONZALEZ RESTREPO CRISTINA ISABEL"], [11, "HERNANDEZ SANJUAN XAMIRA"], [12, "HIDALGO BELEÑO MARIA CAMILA"], [13, "HURTADO VILORIA MARIA ALEJANDRA"], [14, "JAIME SALAS KAROL VANESSA"], [15, "JIMENEZ BEDOYA YURLEIDIS"], [16, "MACHADO SANTOYA YIRALIS DESIREE"], [17, "MANZANILLA RODRIGUEZ RIXON RAFAEL"], [18, "OLIVEROS PERNET JHONATAN DAVID"], [19, "PACHECO BEUFORD DAYUSSI NICOL"], [20, "PACHECO GONZALEZ VALERIA VALENTINA"], [21, "PEREZ BUJATO MARIA ELVIRA"], [22, "PRENTH VIDAL EDER MANUEL"], [23, "ROA JIMENEZ BRENDA ISABEL"], [24, "SANTACRUZ FONTALVO ANDRES FELIPE"], [25, "SUAREZ ANGULO MARIANA"], [26, "TORRES REYES GILLIAM CAROLINA"], [27, "TORRES VELANDIA SARAHI VALENTINA"], [28, "YEPEZ MORALES VALERIE NICOLL"]]}, "items": [{"n": 1, "stem": "En el triángulo ABC, ¿cuál lado es la hipotenusa?", "data": ["Hipotenusa: el lado opuesto al ángulo recto; es el lado más largo."], "opts": ["AB, que mide 5", "BC, que mide 3", "AC, que mide 4", "Ningún lado"], "ctx": ["Triángulo de los ítems 1 y 2. El ángulo recto está en C y el ángulo θ está en A.", {"tri": {"w": 4, "h": 3, "base": "AC = 4", "vert": "BC = 3", "hyp": "AB = 5", "ang": "θ", "V": ["A", "B", "C"]}}]}, {"n": 2, "stem": "Respecto al ángulo θ, ¿cuál es el cateto opuesto y cuál el cateto adyacente?", "data": ["Cateto opuesto a θ: el lado que está enfrente del ángulo θ.", "Cateto adyacente a θ: el lado que forma el ángulo θ junto con la hipotenusa."], "opts": ["Opuesto: AC; adyacente: BC", "Opuesto: AB; adyacente: AC", "Opuesto: BC; adyacente: AB", "Opuesto: BC; adyacente: AC"], "ctx": ["Triángulo de los ítems 1 y 2. El ángulo recto está en C y el ángulo θ está en A.", {"tri": {"w": 4, "h": 3, "base": "AC = 4", "vert": "BC = 3", "hyp": "AB = 5", "ang": "θ", "V": ["A", "B", "C"]}}]}, {"n": 3, "stem": "¿Cuánto vale sen θ en el triángulo ABC?", "steps": [{"data": ["Cateto opuesto a θ: el lado que está enfrente del ángulo θ."], "q": "¿Cuál lado es el cateto opuesto a θ?", "opts": ["BC, que mide 6", "AC, que mide 8", "AB, que mide 10", "Ningún lado"]}, {"data": ["sen θ = cateto opuesto ÷ hipotenusa"], "q": "¿Cuánto vale sen θ?", "opts": ["8/10 = 0,8", "6/8 = 0,75", "6/10 = 0,6", "10/6 ≈ 1,67"]}], "ctx": ["Triángulo del ítem 3. El ángulo recto está en C y el ángulo θ está en A.", {"tri": {"w": 4, "h": 3, "base": "AC = 8", "vert": "BC = 6", "hyp": "AB = 10", "ang": "θ", "V": ["A", "B", "C"]}}]}, {"n": 4, "stem": "¿Tiene razón Camila al decir que cos θ = 13/12?", "data": ["cos θ = cateto adyacente ÷ hipotenusa", "Camila dice: \"cos θ = 13/12\"."], "opts": ["Sí: el coseno divide la hipotenusa entre el cateto adyacente", "No: el coseno divide el cateto adyacente entre la hipotenusa, no al revés", "Sí: el orden de la división no importa", "No: el coseno usa el cateto opuesto, 5"], "ctx": ["Triángulo del ítem 4. El ángulo recto está en C y el ángulo θ está en A.", {"tri": {"w": 12, "h": 5, "base": "AC = 12", "vert": "BC = 5", "hyp": "AB = 13", "ang": "θ", "V": ["A", "B", "C"]}}]}, {"n": 5, "stem": "¿Cuánto vale tan θ en el triángulo ABC?", "steps": [{"data": ["Cateto adyacente a θ: el lado que forma el ángulo θ junto con la hipotenusa."], "q": "¿Cuál lado es el cateto adyacente a θ?", "opts": ["BC, que mide 9", "AB, que mide 15", "Ningún lado", "AC, que mide 12"]}, {"data": ["tan θ = cateto opuesto ÷ cateto adyacente"], "q": "¿Cuánto vale tan θ?", "opts": ["12/9 ≈ 1,33", "9/12 = 0,75", "9/15 = 0,6", "12/15 = 0,8"]}], "ctx": ["Triángulo del ítem 5. El ángulo recto está en C y el ángulo θ está en A.", {"tri": {"w": 4, "h": 3, "base": "AC = 12", "vert": "BC = 9", "hyp": "AB = 15", "ang": "θ", "V": ["A", "B", "C"]}}]}, {"n": 6, "stem": "¿Qué razón trigonométrica relaciona el cateto opuesto con la hipotenusa?", "data": ["sen θ = cateto opuesto ÷ hipotenusa", "cos θ = cateto adyacente ÷ hipotenusa", "tan θ = cateto opuesto ÷ cateto adyacente"], "opts": ["Coseno", "Tangente", "Seno", "Ninguna"], "ctx": ["Se conocen el ángulo de 30° y la hipotenusa, que mide 10 m. Se quiere hallar el cateto opuesto al ángulo de 30°.", {"tri": {"w": 5, "h": 3, "base": "", "vert": "?", "hyp": "10 m", "ang": "30°", "V": ["A", "B", "C"]}}]}, {"n": 7, "stem": "¿Qué fracción es igual a cos θ en el triángulo ABC?", "data": ["cos θ = cateto adyacente ÷ hipotenusa"], "opts": ["8/17", "15/17", "8/15", "17/15"], "ctx": ["Triángulo del ítem 7. El ángulo recto está en C y el ángulo θ está en A.", {"tri": {"w": 15, "h": 8, "base": "AC = 15", "vert": "BC = 8", "hyp": "AB = 17", "ang": "θ", "V": ["A", "B", "C"]}}]}, {"n": 8, "stem": "¿Es correcto que Andrés use el coseno de 40° para hallar la altura del árbol?", "data": ["sen θ = cateto opuesto ÷ hipotenusa", "cos θ = cateto adyacente ÷ hipotenusa", "tan θ = cateto opuesto ÷ cateto adyacente"], "opts": ["No: con la distancia y la altura, que son los dos catetos, se usa la tangente", "Sí: el coseno sirve para cualquier lado", "Sí: la altura es la hipotenusa", "No: se debe usar el seno, porque la distancia es la hipotenusa"], "ctx": ["Andrés está a 12 m del pie de un árbol y ve la punta con un ángulo de 40°. Quiere hallar la altura del árbol.", {"tri": {"w": 4, "h": 3, "base": "distancia: 12 m", "vert": "altura: ?", "hyp": "", "ang": "40°", "V": ["", "", ""]}}]}, {"n": 9, "stem": "¿A qué altura de la pared llega la escalera?", "steps": [{"data": ["Hipotenusa: el lado opuesto al ángulo recto; es el lado más largo."], "q": "¿Qué lado del triángulo es la escalera?", "opts": ["El cateto opuesto al ángulo de 60°", "El cateto adyacente al ángulo de 60°", "Ningún lado", "La hipotenusa"]}, {"data": ["Cateto opuesto a θ: el lado que está enfrente del ángulo θ.", "Cateto adyacente a θ: el lado que forma el ángulo θ junto con la hipotenusa."], "q": "Respecto al ángulo de 60°, ¿qué lado es la altura de la pared?", "opts": ["El cateto adyacente", "El cateto opuesto", "La hipotenusa", "Ningún lado"]}, {"data": ["sen θ = cateto opuesto ÷ hipotenusa", "cos θ = cateto adyacente ÷ hipotenusa", "tan θ = cateto opuesto ÷ cateto adyacente", "Valores: sen 60° ≈ 0,87; cos 60° ≈ 0,5; tan 60° ≈ 1,73", "Escalera: 10 m"], "q": "¿A qué altura llega la escalera?", "opts": ["10 × 0,5 = 5 m", "10 × 1,73 = 17,3 m", "10 × 0,87 = 8,7 m", "10 ÷ 0,87 ≈ 11,5 m"]}], "ctx": ["Una escalera de 10 m está apoyada en una pared y forma un ángulo de 60° con el suelo. Se quiere saber a qué altura de la pared llega.", {"tri": {"w": 3, "h": 5, "base": "suelo", "vert": "altura: ?", "hyp": "escalera: 10 m", "ang": "60°", "V": ["", "", ""]}}]}, {"n": 10, "stem": "¿Cuánto mide el poste?", "steps": [{"data": ["Cateto opuesto a θ: el lado que está enfrente del ángulo θ.", "Cateto adyacente a θ: el lado que forma el ángulo θ junto con la hipotenusa."], "q": "Respecto al ángulo de 45°, ¿qué lado es el poste?", "opts": ["El cateto opuesto", "El cateto adyacente", "La hipotenusa", "Ningún lado"]}, {"data": ["sen θ = cateto opuesto ÷ hipotenusa", "cos θ = cateto adyacente ÷ hipotenusa", "tan θ = cateto opuesto ÷ cateto adyacente", "Valores: sen 45° ≈ 0,71; cos 45° ≈ 0,71; tan 45° ≈ 1", "Sombra: 4 m"], "q": "¿Cuánto mide el poste?", "opts": ["4 × 0,71 ≈ 2,8 m", "4 ÷ 0,71 ≈ 5,6 m", "4 + 1 = 5 m", "4 × 1 = 4 m"]}], "ctx": ["Un poste da una sombra de 4 m en el suelo cuando el sol forma un ángulo de 45° con el suelo.", {"tri": {"w": 4, "h": 4, "base": "sombra: 4 m", "vert": "poste: ?", "hyp": "", "ang": "45°", "V": ["", "", ""]}}]}, {"n": 11, "stem": "Según la gráfica, ¿qué pasa con sen θ cuando el ángulo crece de 30° a 60°?", "opts": ["Disminuye: pasa de 0,87 a 0,5", "No cambia: siempre vale 0,5", "Aumenta: pasa de 0,5 a 0,87", "Aumenta: pasa de 30 a 60"], "ctx": ["Valores del seno de tres ángulos agudos.", {"bars": {"title": "Valor de sen θ", "xlabel": "Ángulo θ", "ylabel": "sen θ", "labels": ["30°", "45°", "60°"], "values": [0.5, 0.71, 0.87], "top": 1, "step": 0.2}}]}, {"n": 12, "stem": "¿Tiene razón Luis al decir que sen θ nunca es mayor que 1?", "data": ["sen θ = cateto opuesto ÷ hipotenusa", "Luis dice: \"En un triángulo rectángulo, sen θ nunca es mayor que 1\"."], "opts": ["Sí: el cateto opuesto siempre es más corto que la hipotenusa, así que la división da menos de 1", "No: sen θ puede valer 5 si el triángulo es grande", "No: sen θ siempre es mayor que 1", "Sí: porque sen θ siempre es 0"], "ctx": ["Triángulo rectángulo con ángulo agudo θ.", {"tri": {"w": 4, "h": 3, "base": "cateto adyacente", "vert": "cateto opuesto", "hyp": "hipotenusa", "ang": "θ", "V": ["", "", ""]}}]}]}, "once_derivadas": {"id": "once_derivadas", "k": "W1sxLCAzLCAxXSwgWzIsIDEsIDNdLCAxLCAyLCBbMCwgMSwgMiwgMywgMV0sIFswLCAzLCAwLCAzLCAyXSwgMCwgMiwgWzAsIDIsIDEsIDBdLCAyLCAwLCAzXQ==", "dims": ["Sesión", "Contenido", "Tipo de tarea", "Pensamiento", "DBA", "Evidencia DBA", "Estándar", "Proceso general", "Competencia ICFES", "Evidencia ICFES"], "meta": [{"Sesión": "Sesión 1", "Contenido": "Regla de la potencia y constante por una función", "Tipo de tarea": "Cálculo por pasos", "Pensamiento": "Pensamiento variacional y sistemas algebraicos y analíticos", "DBA": "DBA 8 de 11.° (MEN, 2016, p. 85)", "Evidencia DBA": "Calcula derivadas de funciones.", "Estándar": "Variacional 10.°-11.°: noción de derivada (MEN, 2006, p. 89)", "Proceso general": "Formulación, comparación y ejercitación de procedimientos", "Competencia ICFES": "Formulación y ejecución", "Evidencia ICFES": "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática."}, {"Sesión": "Sesión 1", "Contenido": "Derivada de suma y resta", "Tipo de tarea": "Cálculo por pasos", "Pensamiento": "Pensamiento variacional y sistemas algebraicos y analíticos", "DBA": "DBA 8 de 11.° (MEN, 2016, p. 85)", "Evidencia DBA": "Calcula derivadas de funciones.", "Estándar": "Variacional 10.°-11.°: noción de derivada (MEN, 2006, p. 89)", "Proceso general": "Formulación, comparación y ejercitación de procedimientos", "Competencia ICFES": "Formulación y ejecución", "Evidencia ICFES": "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática."}, {"Sesión": "Sesión 1", "Contenido": "Regla de la potencia con exponente negativo", "Tipo de tarea": "Cambio de representación", "Pensamiento": "Pensamiento variacional y sistemas algebraicos y analíticos", "DBA": "DBA 8 de 11.° (MEN, 2016, p. 85)", "Evidencia DBA": "Calcula derivadas de funciones.", "Estándar": "Variacional 10.°-11.°: noción de derivada (MEN, 2006, p. 89)", "Proceso general": "Comunicación", "Competencia ICFES": "Interpretación y representación", "Evidencia ICFES": "Transforma la representación de una o más piezas de información."}, {"Sesión": "Sesión 1", "Contenido": "Derivada de una constante", "Tipo de tarea": "Validación de una solución", "Pensamiento": "Pensamiento variacional y sistemas algebraicos y analíticos", "DBA": "DBA 8 de 11.° (MEN, 2016, p. 85)", "Evidencia DBA": "Calcula derivadas de funciones.", "Estándar": "Variacional 10.°-11.°: noción de derivada (MEN, 2006, p. 89)", "Proceso general": "Razonamiento", "Competencia ICFES": "Argumentación", "Evidencia ICFES": "Establece la validez o pertinencia de una solución propuesta a un problema dado."}, {"Sesión": "Sesión 2", "Contenido": "Regla del producto", "Tipo de tarea": "Cálculo por pasos", "Pensamiento": "Pensamiento variacional y sistemas algebraicos y analíticos", "DBA": "DBA 8 de 11.° (MEN, 2016, p. 85)", "Evidencia DBA": "Calcula derivadas de funciones.", "Estándar": "Variacional 10.°-11.°: noción de derivada (MEN, 2006, p. 89)", "Proceso general": "Formulación, comparación y ejercitación de procedimientos", "Competencia ICFES": "Formulación y ejecución", "Evidencia ICFES": "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática."}, {"Sesión": "Sesión 2", "Contenido": "Regla del cociente", "Tipo de tarea": "Cálculo por pasos", "Pensamiento": "Pensamiento variacional y sistemas algebraicos y analíticos", "DBA": "DBA 8 de 11.° (MEN, 2016, p. 85)", "Evidencia DBA": "Calcula derivadas de funciones.", "Estándar": "Variacional 10.°-11.°: noción de derivada (MEN, 2006, p. 89)", "Proceso general": "Formulación, comparación y ejercitación de procedimientos", "Competencia ICFES": "Formulación y ejecución", "Evidencia ICFES": "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática."}, {"Sesión": "Sesión 2", "Contenido": "Regla del cociente", "Tipo de tarea": "Identificación de la regla", "Pensamiento": "Pensamiento variacional y sistemas algebraicos y analíticos", "DBA": "DBA 8 de 11.° (MEN, 2016, p. 85)", "Evidencia DBA": "Calcula derivadas de funciones.", "Estándar": "Variacional 10.°-11.°: noción de derivada (MEN, 2006, p. 89)", "Proceso general": "Comunicación", "Competencia ICFES": "Interpretación y representación", "Evidencia ICFES": "Da cuenta de las características básicas de la información presentada en diferentes formatos como series, gráficas, tablas y esquemas."}, {"Sesión": "Sesión 2", "Contenido": "Regla del producto", "Tipo de tarea": "Validación de un procedimiento", "Pensamiento": "Pensamiento variacional y sistemas algebraicos y analíticos", "DBA": "DBA 8 de 11.° (MEN, 2016, p. 85)", "Evidencia DBA": "Calcula derivadas de funciones.", "Estándar": "Variacional 10.°-11.°: noción de derivada (MEN, 2006, p. 89)", "Proceso general": "Razonamiento", "Competencia ICFES": "Argumentación", "Evidencia ICFES": "Argumenta a favor o en contra de un procedimiento para resolver un problema a la luz de criterios presentados o establecidos."}, {"Sesión": "Sesión 3", "Contenido": "Regla de la cadena", "Tipo de tarea": "Cálculo por pasos", "Pensamiento": "Pensamiento variacional y sistemas algebraicos y analíticos", "DBA": "DBA 8 de 11.° (MEN, 2016, p. 85)", "Evidencia DBA": "Calcula derivadas de funciones.", "Estándar": "Variacional 10.°-11.°: noción de derivada (MEN, 2006, p. 89)", "Proceso general": "Formulación, comparación y ejercitación de procedimientos", "Competencia ICFES": "Formulación y ejecución", "Evidencia ICFES": "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática."}, {"Sesión": "Sesión 3", "Contenido": "Regla de la cadena", "Tipo de tarea": "Identificación de la regla", "Pensamiento": "Pensamiento variacional y sistemas algebraicos y analíticos", "DBA": "DBA 8 de 11.° (MEN, 2016, p. 85)", "Evidencia DBA": "Calcula derivadas de funciones.", "Estándar": "Variacional 10.°-11.°: noción de derivada (MEN, 2006, p. 89)", "Proceso general": "Comunicación", "Competencia ICFES": "Interpretación y representación", "Evidencia ICFES": "Da cuenta de las características básicas de la información presentada en diferentes formatos como series, gráficas, tablas y esquemas."}, {"Sesión": "Sesión 3", "Contenido": "Regla de la cadena con raíz", "Tipo de tarea": "Cambio de representación", "Pensamiento": "Pensamiento variacional y sistemas algebraicos y analíticos", "DBA": "DBA 8 de 11.° (MEN, 2016, p. 85)", "Evidencia DBA": "Calcula derivadas de funciones.", "Estándar": "Variacional 10.°-11.°: noción de derivada (MEN, 2006, p. 89)", "Proceso general": "Comunicación", "Competencia ICFES": "Interpretación y representación", "Evidencia ICFES": "Transforma la representación de una o más piezas de información."}, {"Sesión": "Sesión 3", "Contenido": "Regla de la cadena", "Tipo de tarea": "Validación de un procedimiento", "Pensamiento": "Pensamiento variacional y sistemas algebraicos y analíticos", "DBA": "DBA 8 de 11.° (MEN, 2016, p. 85)", "Evidencia DBA": "Calcula derivadas de funciones.", "Estándar": "Variacional 10.°-11.°: noción de derivada (MEN, 2006, p. 89)", "Proceso general": "Razonamiento", "Competencia ICFES": "Argumentación", "Evidencia ICFES": "Argumenta a favor o en contra de un procedimiento para resolver un problema a la luz de criterios presentados o establecidos."}], "students": {"1101": [[1, "ALTAMAR MARRIAGA LUIS MANUEL"], [2, "ANGULO SARMIENTO MARCELA"], [3, "ARIZA MIRANDA FERNEY DAVID"], [4, "ARIZA YEPEZ SARA LINEYS"], [5, "BARONA GRANDET MILAGRO DE JESUS"], [6, "BASSA VIZCAINO ALEXIS DE JESUS"], [7, "BELTRAN CASTELLANOS SARAY"], [8, "CAMPIÑO MALDONADO VALENTINA JOSE"], [9, "CASSIANI PRENT CARMEN ALICIA"], [10, "CASTRO SANTACRUZ RUBEYMIS YELENA"], [11, "CERVANTES CASTELLANOS DAINER DAVID"], [12, "CERVANTES GARCIA BRUSLEIDER"], [13, "DE ALBA RAMOS MARIA FERNANDA"], [14, "DE LA HOZ MANOTAS LORENA PAOLA"], [15, "GOMEZ VENTURA ANGEL JOSE"], [16, "GONZALEZ CASTRO PAULETH YULIANA"], [17, "GONZALEZ OCHOA JUAN CAMILO"], [18, "GONZALEZ VEGA JESUS ADRIAN"], [19, "JARAMILLO GOMEZ ELIS DAVID"], [20, "JIMENEZ BEDOYA DIANYS SARITH"], [21, "JIMENEZ CASTILLO JESUS DANIEL"], [22, "JIMENEZ MARTINEZ KLER"], [23, "JIMENEZ SANCHEZ HELEN PATRICIA"], [24, "LOPEZ MATOS MEYLUZ VANESSA"], [25, "LUNA MERCADO SANTIAGO JOSE"], [26, "MARES CERVANTES AMILCAR"], [27, "MEDINA PEÑA PAULA ISABEL"], [28, "MORALES ANGULO MARIA CAMILA"], [29, "NIETO OROZCO ELIU DANIEL"], [30, "OLIVERO PRENTH AYLIN DE LOS ANGELES"], [31, "OSPINA BRIÑEZ JHOJAN STEBAN"], [32, "POVEDA BARRAZA DUVAN JOSE"], [33, "PRENTH MARTINEZ SANTIAGO MIGUEL"], [34, "PRENTH MARTINEZ SEBASTIAN MIGUEL"], [35, "SUAREZ MATTOS KEIDER DAVID"], [36, "URINA ESPINOZA LOREYNNE GABRIELA"], [37, "VILLANUEVA MOVILLA KANER"]], "1102": [[1, "ARELLANO MARTINEZ ANGIE PAOLA"], [2, "CAMARGO BARRERA ELIZABETH PAOLA"], [3, "CARO OSPINO NEYID DAVID"], [4, "DE LA CRUZ BLANCO LILI JOHANA"], [5, "ESMERAL RUIZ ISABEL CRISTINA"], [6, "FIGUEROA SUAREZ ESTEFANY MARIA"], [7, "FLOREZ CARRILLO NASHIRA PAOLA"], [8, "FLOREZ CARRILLO NATALIA LUCIA"], [9, "GRATEROL CHIRINOS FABIANA DE LOS ANGELES"], [10, "HERNANDEZ PIANETA IGNACIO DAVID"], [11, "JIMENEZ ZARATE JESUS DANIEL"], [12, "MARIOTA HERNANDEZ LINDA PAOLA"], [13, "MELGAREJO GONZALEZ FREIRYS ISABEL"], [14, "MORALES CORONADO CRISTIAN CAMILO"], [15, "MUÑOZ TORRES JOSEPH MANUEL"], [16, "OCHOA VIZCAINO ALDAIR"], [17, "PRENTH REDONDO OSKEIDER"], [18, "RODRIGUEZ YEPEZ LUISA MARCELA"], [19, "SUAREZ BERMEJO YEIVELIN ISABEL"], [20, "TEJADA SARMIENTO YOHAYLIS DEL CARMEN"], [21, "VALDEZ MANOTAS ALEXANDER"], [22, "VENTURA MANOTAS JOSE DANIEL"]]}, "items": [{"n": 1, "stem": "Deriva f(x) = 2x³.", "steps": [{"data": ["Función: f(x) = 2x³"], "q": "¿Qué regla se aplica para derivar f(x) = 2x³?", "opts": ["Regla del producto", "Regla de la constante por una función", "Regla del cociente", "Regla de la cadena"]}, {"data": ["Regla de la potencia: la derivada de xⁿ es n · xⁿ⁻¹"], "q": "¿Cuál es la derivada de x³?", "opts": ["x²", "3x³", "2x³", "3x²"]}, {"data": ["Función: f(x) = 2 · x³", "Derivada de x³: 3x²", "Regla de la constante por una función: f'(x) = 2 · 3x²"], "q": "¿Cuánto es 2 · 3x²?", "opts": ["5x²", "6x²", "6x³", "2x²"]}], "ctx": null}, {"n": 2, "stem": "Deriva f(x) = x² + 5x.", "steps": [{"data": ["Función: f(x) = x² + 5x"], "q": "¿Qué regla se aplica para derivar f(x) = x² + 5x?", "opts": ["Regla del producto", "Regla del cociente", "Regla de la suma y la resta", "Regla de la cadena"]}, {"data": ["Regla de la potencia: la derivada de xⁿ es n · xⁿ⁻¹"], "q": "¿Cuál es la derivada de x²?", "opts": ["x", "2x", "2x²", "x²"]}, {"data": ["Derivada de x²: 2x", "Derivada de 5x: 5", "Regla de la suma: f'(x) = (derivada de x²) + (derivada de 5x)"], "q": "Si reemplazas las dos derivadas en la regla de la suma f'(x) = (derivada de x²) + (derivada de 5x), ¿qué expresión obtienes?", "opts": ["2x + 5x", "x + 5", "2x · 5", "2x + 5"]}], "ctx": null}, {"n": 3, "stem": "Para derivar f(x) = 1/x² con la regla de la potencia, ¿cómo se escribe primero 1/x²?", "data": ["Propiedad de los exponentes: 1/xⁿ = x⁻ⁿ"], "opts": ["x²", "x⁻²", "−x²", "2x⁻¹"], "ctx": null}, {"n": 4, "stem": "¿Es correcta la derivada que escribió Carlos para f(x) = 2x³ + 5?", "data": ["Función: f(x) = 2x³ + 5", "Respuesta de Carlos: f'(x) = 6x² + 5", "Regla de la potencia: la derivada de xⁿ es n · xⁿ⁻¹", "Derivada de un número solo (constante): 0"], "opts": ["Sí: derivó cada término", "No: la derivada de 2x³ es 6x³", "No: la derivada de la constante 5 es 0, y la respuesta es 6x²", "Sí: la constante se conserva al derivar"], "ctx": null}, {"n": 5, "stem": "Deriva f(x) = x · (x + 3).", "steps": [{"data": ["Función: f(x) = x · (x + 3)"], "q": "¿Qué regla se aplica para derivar f(x) = x · (x + 3)?", "opts": ["Regla del producto", "Regla del cociente", "Regla de la cadena", "Regla de la suma y la resta"]}, {"data": ["Función: f(x) = x · (x + 3)", "u = x (primer factor)", "v = x + 3 (segundo factor)", "Derivada de x: 1. Derivada de un número solo (constante): 0"], "q": "¿Cuál es la derivada de u = x?", "opts": ["x", "1", "0", "3"]}, {"data": ["Función: f(x) = x · (x + 3)", "u = x (primer factor)", "v = x + 3 (segundo factor)", "Derivada de x: 1. Derivada de un número solo (constante): 0"], "q": "¿Cuál es la derivada de v = x + 3?", "opts": ["x", "3", "1", "x + 1"]}, {"data": ["Regla del producto: f'(x) = u' · v + u · v'", "u = x", "v = x + 3", "u' = 1", "v' = 1"], "q": "Si reemplazas u, v, u' y v' en la regla del producto f'(x) = u' · v + u · v', ¿qué expresión obtienes?", "opts": ["1 · 1", "1 · (x + 3) − x · 1", "x · (x + 3) + 1", "1 · (x + 3) + x · 1"]}, {"data": ["f'(x) = 1 · (x + 3) + x · 1", "Al quitar las multiplicaciones por 1: f'(x) = x + 3 + x"], "q": "En la expresión x + 3 + x, ¿qué resulta al sumar x + x?", "opts": ["x + 3", "2x + 3", "2x + 6", "x² + 3"]}], "ctx": null}, {"n": 6, "stem": "Deriva f(x) = x / (x + 1).", "steps": [{"data": ["Función: f(x) = x / (x + 1)"], "q": "¿Qué regla se aplica para derivar f(x) = x / (x + 1)?", "opts": ["Regla del cociente", "Regla del producto", "Regla de la cadena", "Regla de la suma y la resta"]}, {"data": ["Función: f(x) = x / (x + 1)", "u = x (numerador)", "v = x + 1 (denominador)", "Derivada de x: 1. Derivada de un número solo (constante): 0"], "q": "¿Cuál es la derivada de u = x?", "opts": ["x", "0", "2", "1"]}, {"data": ["Función: f(x) = x / (x + 1)", "u = x (numerador)", "v = x + 1 (denominador)", "Derivada de x: 1. Derivada de un número solo (constante): 0"], "q": "¿Cuál es la derivada de v = x + 1?", "opts": ["1", "x", "0", "x + 1"]}, {"data": ["Regla del cociente: f'(x) = (u' · v − u · v') / v²", "u = x", "v = x + 1", "u' = 1", "v' = 1"], "q": "Si reemplazas u, v, u' y v' en la regla del cociente f'(x) = (u' · v − u · v') / v², ¿qué expresión obtienes?", "opts": ["[1 · (x + 1) + x · 1] / (x + 1)²", "[x · 1 − 1 · (x + 1)] / (x + 1)²", "1 / 1", "[1 · (x + 1) − x · 1] / (x + 1)²"]}, {"data": ["f'(x) = [1 · (x + 1) − x · 1] / (x + 1)²", "Al quitar las multiplicaciones por 1, el numerador queda: x + 1 − x"], "q": "¿Cuánto es x + 1 − x?", "opts": ["2x + 1", "x", "1", "−1"]}], "ctx": null}, {"n": 7, "stem": "¿Cuál de estas funciones se deriva con la regla del cociente?", "data": ["La regla del cociente se usa cuando la función es una división y el denominador tiene x"], "opts": ["(x² + 1) / (x − 2)", "5x²", "3x⁴", "(x + 1)(x − 1)"], "ctx": null}, {"n": 8, "stem": "¿Es correcto el procedimiento de Sofía para derivar f(x) = x · (x + 3)?", "data": ["Función: f(x) = x · (x + 3)", "Lo que hizo Sofía: derivó cada factor (la derivada de x es 1 y la de x + 3 es 1) y multiplicó esas derivadas: 1 · 1 = 1", "Regla del producto: f'(x) = u' · v + u · v'"], "opts": ["Sí: la derivada de un producto es el producto de las derivadas", "No: debía sumar las derivadas, 1 + 1 = 2", "No: la regla del producto es u' · v + u · v', y Sofía multiplicó solo las derivadas", "Sí, pero solo cuando x = 1"], "ctx": null}, {"n": 9, "stem": "Deriva f(x) = (2x + 1)³.", "steps": [{"data": ["Función: f(x) = (2x + 1)³"], "q": "¿Qué regla se aplica para derivar f(x) = (2x + 1)³?", "opts": ["Regla de la cadena", "Regla del producto", "Regla del cociente", "Regla de la suma y la resta"]}, {"data": ["Función: f(x) = (2x + 1)³", "Función externa: u³", "Función interna: 2x + 1", "Regla de la potencia: la derivada de uⁿ es n · uⁿ⁻¹"], "q": "¿Cuál es la derivada de la función externa u³?", "opts": ["u²", "3u³", "3u²", "2u³"]}, {"data": ["Función: f(x) = (2x + 1)³", "Función externa: u³", "Función interna: 2x + 1", "Derivada de 2x: 2. Derivada de un número solo (constante): 0"], "q": "¿Cuál es la derivada de la función interna 2x + 1?", "opts": ["2x", "2", "1", "3"]}, {"data": ["Regla de la cadena: f'(x) = (derivada de la externa) · (derivada de la interna)", "Derivada de la externa: 3(2x + 1)²", "Derivada de la interna: 2", "f'(x) = 3(2x + 1)² · 2"], "q": "Por la regla de la cadena, f'(x) = 3(2x + 1)² · 2. ¿Cómo queda al multiplicar 3 por 2?", "opts": ["6(2x + 1)²", "5(2x + 1)²", "6(2x + 1)³", "3(2x + 1)²"]}], "ctx": null}, {"n": 10, "stem": "En f(x) = (x + 4)⁵, ¿cuál es la función externa y cuál la interna?", "data": ["Función interna: la expresión que está dentro del paréntesis", "Función externa: la operación que se aplica al paréntesis completo; se escribe con u en lugar de la interna"], "opts": ["Externa: x + 4; interna: u⁵", "Externa: x; interna: 4", "Externa: u⁵; interna: x + 4", "Externa: 5u; interna: x"], "ctx": null}, {"n": 11, "stem": "Para derivar f(x) = √(x + 1) con la regla de la cadena, ¿cómo se escribe √(x + 1) como potencia?", "data": ["Propiedad: √a = a con exponente 1/2"], "opts": ["(x + 1) con exponente 1/2", "(x + 1) con exponente 2", "x con exponente 1/2, más 1", "(x + 1) con exponente −2"], "ctx": null}, {"n": 12, "stem": "¿Es correcta la derivada que escribió Daniel para f(x) = (3x + 1)²?", "data": ["Función: f(x) = (3x + 1)²", "Respuesta de Daniel: f'(x) = 2(3x + 1)", "Regla de la cadena: f'(x) = (derivada de la externa) · (derivada de la interna)", "Función externa: u²; función interna: 3x + 1"], "opts": ["Sí: aplicó bien la regla de la potencia", "No: el exponente debía seguir siendo 2", "Sí: la función interna 3x + 1 no se deriva", "No: falta multiplicar por 3, que es la derivada de la función interna 3x + 1"], "ctx": null}]}};
+const TITLES = {"decimo_trigonometria": "Prueba de décimo: razones trigonométricas", "once_derivadas": "Prueba de once: reglas básicas de derivación"};
+const ORDER = ["decimo_trigonometria", "once_derivadas"];
+const T_GEN = "Pruebas de décimo y once: razones trigonométricas y derivadas";
+const GROUP_TEST = {}; ORDER.forEach(id => Object.keys(TESTS[id].students).forEach(g => { GROUP_TEST[g] = id; }));
+const SET_KEY = "ietal_pruebas_unificadas_v1_set";
+const L = "abcd";
+const DB = {};
+let CFG, KEY, ANS, oldN = 0;
+const mem = {records: [], settings: {equipo: "", aplic: "Preprueba", pin: ""}};
+function keyOf(id){ return "ietal_" + id + "_v4_" + TESTS[id].items.map(it => it.steps ? it.steps.length : 0).join(""); }
+function use(id){
+  CFG = TESTS[id]; KEY = keyOf(id); ANS = JSON.parse(atob(CFG.k));
+  if(!DB[id]) DB[id] = {records: [], oldN: 0};
+  mem.records = DB[id].records; oldN = DB[id].oldN;
+}
+function restore(){ const g = $("grupo").value; use(GROUP_TEST[g] || ORDER[0]); }
+/* Modo servidor: la página se abrió con INICIAR_WINDOWS.bat y guarda en datos/base_datos.sqlite.
+   Modo archivo: la página se abrió con doble clic y guarda en el navegador, como antes. */
+const MODE = {srv: false, ruta: "", fallo: false, listo: false, online: true, clave: "", hechos: [], enviando: false, local: false};
+/* Web app de Google Apps Script que reciben todos los simuladores de El Profe Royero */
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwMrKr8zH4a6saHbOvpy4MSwxh7_BkCoIi03_D_nyTF3YeVnP-Gz8psXTc4JJHhs_IjXg/exec";
+/* Nombre de la asignatura de cada prueba; debe coincidir letra por letra con el Code.gs */
+const ASIG = {"decimo_trigonometria": "Prueba Razones Trigonométricas 10°", "once_derivadas": "Prueba Reglas de Derivación 11°"};
+const ONLINE_SET = "ietal_pruebas_en_linea_v1_set", ONLINE_PEND = "ietal_pruebas_en_linea_v1_pendientes", ONLINE_COPY = "ietal_pruebas_en_linea_v1_copia";
+let ultimo = null;
+
+/* Identificador del equipo: se calcula una vez y queda guardado en este navegador */
+function generarFingerprint(){
+  try{ const g = localStorage.getItem("ietal_fingerprint"); if(g) return g; }catch(e){}
+  let lienzo = "";
+  try{
+    const c = document.createElement("canvas"); c.width = 200; c.height = 40;
+    const x = c.getContext("2d");
+    x.textBaseline = "top"; x.font = "16px Arial"; x.fillStyle = "#1f497d"; x.fillRect(0, 0, 60, 20);
+    x.fillStyle = "#e76f51"; x.fillText("IETAL Luruaco 10-11", 4, 12);
+    lienzo = c.toDataURL();
+  }catch(e){}
+  const partes = [navigator.userAgent, navigator.language, navigator.hardwareConcurrency || "", navigator.deviceMemory || "",
+    screen.width + "x" + screen.height, screen.colorDepth, (Intl.DateTimeFormat().resolvedOptions().timeZone || ""), lienzo].join("|");
+  let h = 5381;
+  for(let i = 0; i < partes.length; i++) h = ((h << 5) + h + partes.charCodeAt(i)) >>> 0;
+  const fp = "EQ-" + h.toString(36).toUpperCase().slice(-5).padStart(5, "0");
+  try{ localStorage.setItem("ietal_fingerprint", fp); }catch(e){}
+  return fp;
+}
+const FP = generarFingerprint();
+
+function jsonp(params){
+  return new Promise((res, rej) => {
+    const cb = "pietal_" + Date.now() + "_" + Math.floor(Math.random() * 1e6), sc = document.createElement("script");
+    let tm = 0;
+    const fin = () => { clearTimeout(tm); try{ delete window[cb]; }catch(e){ window[cb] = undefined; } sc.remove(); };
+    tm = setTimeout(() => { fin(); rej(new Error("la hoja no respondió a tiempo")); }, 30000);
+    window[cb] = x => { fin(); res(x); };
+    const q = new URLSearchParams();
+    Object.entries(params).forEach(([k, v]) => q.set(k, typeof v === "string" ? v : JSON.stringify(v)));
+    q.set("callback", cb);
+    sc.src = SCRIPT_URL + "?" + q.toString();
+    sc.onerror = () => { fin(); rej(new Error("no hay conexión con la hoja de Google")); };
+    document.head.appendChild(sc);
+  });
+}
+async function remote(params){
+  const r = await jsonp(params);
+  if(!r || !r.ok) throw new Error((r && r.error) || "la hoja no aceptó la solicitud");
+  return r;
+}
+function marca(i, v){
+  if(isCh(i)){ const m = nSteps(i), k = stepsOk(i, v); if(v.every(x => x < 0)) return "-"; return k === m ? "✓" : (k === 0 ? "✗" : k + "/" + m); }
+  return v < 0 ? "-" : (v === ANS[i] ? "✓" : "✗");
+}
+function parametros(r){
+  use(r.prueba);
+  const n = CFG.items.length, c = r.resp.reduce((s, v, i) => s + hit(i, v), 0), correctas = Math.round(c * 1000) / 1000;
+  const reg = Object.assign({}, r); delete reg.uid;
+  const p = {asignatura: ASIG[r.prueba], accion: "registrar", nombre: r.nombre, curso: r.grupo, nivel: r.aplicacion,
+    correctas, incorrectas: Math.round((n - c) * 1000) / 1000, porcentaje: Math.round(c / n * 100),
+    nota: Math.round(c / n * 5 * 10) / 10, fecha: r.fechaIso || r.fecha, fingerprint: r.fingerprint || "",
+    lista: String(r.lista || ""), minutos: r.minutos, equipo: String(r.equipo || ""), id: uidOf(r), datos: reg};
+  r.resp.forEach((v, i) => { p["p" + (i + 1)] = marca(i, v); });
+  restore();
+  return p;
+}
+function readL(k){ try{ return JSON.parse(localStorage.getItem(k) || "[]"); }catch(e){ return []; } }
+function writeL(k, a){ try{ localStorage.setItem(k, JSON.stringify(a)); return true; }catch(e){ return false; } }
+function netMsg(){
+  const n = readL(ONLINE_PEND).length, m = $("netMsg");
+  const t = n ? "Hay " + n + (n === 1 ? " prueba guardada" : " pruebas guardadas") + " en este dispositivo que todavía no " + (n === 1 ? "llega" : "llegan") + " a la hoja de Google. Se envían solas cuando haya internet; no borres los datos del navegador antes." : "";
+  m.textContent = t; m.classList.toggle("hidden", !t);
+  $("btnRetry").classList.toggle("hidden", !n);
+}
+async function enviar(r){ await remote(parametros(r)); writeL(ONLINE_PEND, readL(ONLINE_PEND).filter(x => x.uid !== r.uid)); }
+async function flushPend(){
+  if(MODE.enviando) return;
+  const pend = readL(ONLINE_PEND); if(!pend.length){ netMsg(); return; }
+  MODE.enviando = true;
+  for(const r of pend){ try{ await enviar(r); }catch(e){ break; } }
+  MODE.enviando = false; netMsg(); loadDone();
+}
+async function loadDone(){
+  try{
+    const r = await remote({asignatura: ASIG[ORDER[0]], accion: "respondieron", nivel: mem.settings.aplic});
+    const back = {}; ORDER.forEach(id => { back[ASIG[id]] = id; });
+    MODE.hechos = (r.lista || []).map(h => [back[h[0]], String(h[1]), h[2]]);
+    fillNames();
+  }catch(e){}
+}
+async function sha(t){ try{ const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("ietal|" + t)); return Array.from(new Uint8Array(b)).map(x => x.toString(16).padStart(2, "0")).join(""); }catch(e){ return ""; } }
+async function onlineInit(){
+  try{ const st = JSON.parse(localStorage.getItem(ONLINE_SET) || "{}"); mem.settings.equipo = st.equipo || ""; if(st.aplic) mem.settings.aplic = st.aplic; if(st.h) mem.settings.h = st.h; if(st.ultimoRespaldo) mem.settings.ultimoRespaldo = st.ultimoRespaldo; }catch(e){}
+  ORDER.forEach(id => { DB[id] = {records: [], oldN: 0}; });
+  MODE.listo = true;
+  restore(); sub(); fillNames(); netMsg();
+  try{ const st = await remote({asignatura: ASIG[ORDER[0]], accion: "estado"}); mem.settings.aplic = st.aplicacion || "Preprueba"; save(); sub(); }catch(e){}
+  await flushPend(); await loadDone();
+  window.addEventListener("online", flushPend);
+  setInterval(flushPend, 60000);
+}
+function loadList(list){ ORDER.forEach(id => { DB[id] = {records: [], oldN: 0}; }); list.forEach(addRec); restore(); }
+async function loadOnline(){ const r = await remote({asignatura: ASIG[ORDER[0]], accion: "registros", clave: MODE.clave}); loadList(r.registros || []); MODE.local = false; }
+const PEND_KEY = "ietal_pruebas_unificadas_pendientes";
+async function api(method, url, body){
+  const r = await fetch(url, {method, headers: {"Content-Type": "application/json"}, body: body === undefined ? undefined : JSON.stringify(body)});
+  if(!r.ok) throw new Error("el servidor respondió " + r.status);
+  return r.json();
+}
+function uidOf(r){ return [r.prueba, r.aplicacion, r.grupo, r.lista, r.nombre, r.fecha, r.inicio, r.fin, r.equipo].join("|"); }
+function addRec(r){
+  const id = r && r.prueba;
+  if(!TESTS[id]) return "bad";
+  use(id);
+  if(!validRec(r)) return "bad";
+  r.uid = uidOf(r);
+  if(DB[id].records.some(x => x.uid === r.uid)) return "dup";
+  DB[id].records.push(r);
+  return "add";
+}
+function allRecs(){ return ORDER.reduce((a, id) => a.concat(DB[id].records), []); }
+function readPend(){ try{ return JSON.parse(localStorage.getItem(PEND_KEY) || "[]"); }catch(e){ return []; } }
+function addPend(r){ try{ localStorage.setItem(PEND_KEY, JSON.stringify(readPend().concat([r]))); return true; }catch(e){ return false; } }
+async function loadSrv(){
+  ORDER.forEach(id => { DB[id] = {records: [], oldN: 0}; });
+  const all = await api("GET", "api/registros");
+  (all.registros || []).forEach(addRec);
+  restore();
+}
+async function init(){
+  if(MODE.online){ await onlineInit(); return; }
+  if(location.protocol === "http:" || location.protocol === "https:"){
+    try{
+      const st = await api("GET", "api/estado");
+      MODE.srv = true; MODE.ruta = st.ruta || "";
+      const pend = readPend();
+      if(pend.length){ await api("POST", "api/registros", {registros: pend}); localStorage.removeItem(PEND_KEY); }
+      await loadSrv();
+      const aj = await api("GET", "api/ajustes");
+      mem.settings = {equipo: "", aplic: "Preprueba", pin: ""};
+      if(aj && aj.ajustes) Object.assign(mem.settings, aj.ajustes);
+    }catch(e){ MODE.fallo = true; MODE.srv = false; }
+  }
+  MODE.listo = true;
+  restore(); sub(); fillNames();
+  if(!$("panelBody").classList.contains("hidden")) panel();
+}
+
+function validRec(r){
+  if(!r || !Array.isArray(r.resp) || r.resp.length !== CFG.items.length || !Array.isArray(r.ts) || r.ts.length !== CFG.items.length) return false;
+  return CFG.items.every((it, i) => it.steps ? (Array.isArray(r.resp[i]) && r.resp[i].length === it.steps.length && Array.isArray(r.ts[i]) && r.ts[i].length === it.steps.length) : typeof r.resp[i] === "number");
+}
+function load(){
+  if(MODE.online) return;
+  ORDER.forEach(id => {
+    use(id);
+    let recs = [], on = 0;
+    try{
+      const r = localStorage.getItem(KEY + "_rec"); if(r) recs = JSON.parse(r);
+      const ok = recs.filter(validRec), bad = recs.filter(x => !validRec(x));
+      if(bad.length){ const o = JSON.parse(localStorage.getItem(KEY + "_old") || "[]"); localStorage.setItem(KEY + "_old", JSON.stringify(o.concat(bad))); localStorage.setItem(KEY + "_rec", JSON.stringify(ok)); }
+      recs = ok;
+      for(let k = 0; k < localStorage.length; k++){ const kk = localStorage.key(k); if(kk.indexOf("ietal_" + id + "_") === 0 && kk.indexOf(KEY) !== 0 && /_rec$/.test(kk)){ try{ on += JSON.parse(localStorage.getItem(kk)).length; }catch(e){} } }
+      on += JSON.parse(localStorage.getItem(KEY + "_old") || "[]").length;
+    }catch(e){}
+    recs.forEach(r => { r.uid = uidOf(r); });
+    DB[id] = {records: recs, oldN: on};
+  });
+  try{
+    const s = localStorage.getItem(SET_KEY);
+    if(s) Object.assign(mem.settings, JSON.parse(s));
+    else for(const id of ORDER){ const o = localStorage.getItem("ietal_" + id + "_v3_set"); if(o){ Object.assign(mem.settings, JSON.parse(o)); break; } }
+  }catch(e){}
+  use(ORDER[0]);
+}
+function save(){
+  if(MODE.online){ try{ localStorage.setItem(ONLINE_SET, JSON.stringify({equipo: mem.settings.equipo, aplic: mem.settings.aplic, h: mem.settings.h || "", ultimoRespaldo: mem.settings.ultimoRespaldo || ""})); }catch(e){} return true; }
+  if(MODE.srv){ api("PUT", "api/ajustes", {ajustes: mem.settings}).catch(() => {}); return true; }
+  try{
+    ORDER.forEach(id => localStorage.setItem(keyOf(id) + "_rec", JSON.stringify(DB[id].records)));
+    localStorage.setItem(SET_KEY, JSON.stringify(mem.settings));
+    return true;
+  }catch(e){ return false; }
+}
+const $ = id => document.getElementById(id);
+function show(id){ ["start","test","done","panel"].forEach(s => $(s).classList.toggle("hidden", s !== id)); window.scrollTo(0,0); }
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function sub(){ $("sub").textContent = mem.settings.aplic + " · Equipo " + (mem.settings.equipo || "sin asignar") + " · IETAL"; }
+
+const isCh = i => Array.isArray(ANS[i]);
+const nSteps = i => isCh(i) ? ANS[i].length : 1;
+const keyTxt = i => isCh(i) ? ANS[i].map(v => L[v]).join("-") : L[ANS[i]];
+function ansTxt(i, v){ if(isCh(i)){ return v.every(x => x < 0) ? "" : v.map(x => x < 0 ? "_" : L[x]).join("-"); } return v < 0 ? "" : L[v]; }
+function hit(i, v){ return isCh(i) ? Math.round(v.reduce((s, x, j) => s + (x === ANS[i][j] ? 1 : 0), 0) / ANS[i].length * 1000) / 1000 : (v === ANS[i] ? 1 : 0); }
+function stepsOk(i, v){ return isCh(i) ? v.reduce((s, x, j) => s + (x === ANS[i][j] ? 1 : 0), 0) : hit(i, v); }
+function ctxOf(i){ for(let k = i; k >= 0; k--) if(CFG.items[k].ctx) return CFG.items[k].ctx; return null; }
+function barsSvg(b){
+  const W = 560, H = 300, L0 = 56, R0 = 16, T0 = 34, B0 = 56, pw = W - L0 - R0, ph = H - T0 - B0;
+  const vmax = Math.max.apply(null, b.values), step = b.step || (vmax > 20 ? 10 : (vmax > 10 ? 2 : 1)), top = b.top || Math.ceil(vmax / step) * step + step;
+  const fm = v => String(Math.round(v * 100) / 100).replace(".", ",");
+  const y = v => T0 + ph - v / top * ph, n = b.values.length, suf = b.suffix || "";
+  let g = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(b.title) + '" style="width:100%;max-width:560px;height:auto;display:block">';
+  g += '<text x="' + (W / 2) + '" y="18" text-anchor="middle" font-size="15" font-weight="bold" fill="currentColor">' + esc(b.title) + '</text>';
+  for(let q = 0; q <= Math.round(top / step); q++){ const v = q * step; g += '<line x1="' + L0 + '" x2="' + (W - R0) + '" y1="' + y(v) + '" y2="' + y(v) + '" stroke="var(--line)"/><text x="' + (L0 - 6) + '" y="' + (y(v) + 4) + '" text-anchor="end" font-size="12" fill="currentColor">' + fm(v) + '</text>'; }
+  const slot = pw / n, bw = b.hist ? slot : slot * 0.6;
+  b.values.forEach((v, k) => {
+    const x0 = L0 + k * slot + (slot - bw) / 2;
+    g += '<rect x="' + x0 + '" y="' + y(v) + '" width="' + bw + '" height="' + (T0 + ph - y(v)) + '" fill="var(--acc)" fill-opacity="0.75" stroke="var(--ink)" stroke-width="1"/>';
+    g += '<text x="' + (x0 + bw / 2) + '" y="' + (y(v) - 6) + '" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">' + fm(v) + suf + '</text>';
+    if(!b.hist) g += '<text x="' + (x0 + bw / 2) + '" y="' + (T0 + ph + 18) + '" text-anchor="middle" font-size="13" fill="currentColor">' + esc(b.labels[k]) + '</text>';
+  });
+  if(b.hist) b.labels.forEach((lb, k) => { g += '<text x="' + (L0 + k * slot) + '" y="' + (T0 + ph + 18) + '" text-anchor="middle" font-size="13" fill="currentColor">' + esc(lb) + '</text>'; });
+  g += '<line x1="' + L0 + '" x2="' + (W - R0) + '" y1="' + (T0 + ph) + '" y2="' + (T0 + ph) + '" stroke="var(--ink)"/><line x1="' + L0 + '" x2="' + L0 + '" y1="' + T0 + '" y2="' + (T0 + ph) + '" stroke="var(--ink)"/>';
+  g += '<text x="' + (L0 + pw / 2) + '" y="' + (H - 12) + '" text-anchor="middle" font-size="13" fill="currentColor">' + esc(b.xlabel) + '</text>';
+  g += '<text transform="translate(16,' + (T0 + ph / 2) + ') rotate(-90)" text-anchor="middle" font-size="13" fill="currentColor">' + esc(b.ylabel) + '</text>';
+  return g + "</svg>";
+}
+function triSvg(t){
+  const W = 460, H = 270, ax = 140, ay = 225, sc = Math.min(240 / t.w, 190 / t.h), cx = ax + t.w * sc, by = ay - t.h * sc;
+  const V = t.V || ["A", "B", "C"];
+  let g = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Triángulo rectángulo" style="width:100%;max-width:440px;height:auto;display:block;margin:0 auto">';
+  g += '<polygon points="' + ax + ',' + ay + ' ' + cx + ',' + ay + ' ' + cx + ',' + by + '" fill="var(--card)" fill-opacity="0.6"/>';
+  g += '<line x1="' + ax + '" y1="' + ay + '" x2="' + cx + '" y2="' + ay + '" stroke="#457b9d" stroke-width="4"/>';
+  g += '<line x1="' + cx + '" y1="' + ay + '" x2="' + cx + '" y2="' + by + '" stroke="#2a9d8f" stroke-width="4"/>';
+  g += '<line x1="' + ax + '" y1="' + ay + '" x2="' + cx + '" y2="' + by + '" stroke="#e76f51" stroke-width="4"/>';
+  g += '<rect x="' + (cx - 16) + '" y="' + (ay - 16) + '" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"/>';
+  const ang = Math.atan2(ay - by, cx - ax), r = 38;
+  g += '<path d="M ' + (ax + r) + ' ' + ay + ' A ' + r + ' ' + r + ' 0 0 0 ' + (ax + r * Math.cos(ang)) + ' ' + (ay - r * Math.sin(ang)) + '" fill="none" stroke="currentColor" stroke-width="2"/>';
+  g += '<text x="' + (ax + (r + 14) * Math.cos(ang / 2)) + '" y="' + (ay - (r + 14) * Math.sin(ang / 2) + 5) + '" font-size="15" font-weight="bold" fill="currentColor">' + esc(t.ang) + '</text>';
+  const lab = (x, y, s, anc) => s ? '<text x="' + x + '" y="' + y + '" text-anchor="' + anc + '" font-size="14" font-weight="bold" fill="currentColor">' + esc(s) + '</text>' : "";
+  g += lab((ax + cx) / 2, ay + 24, t.base, "middle") + lab(cx + 10, (ay + by) / 2 + 5, t.vert, "start");
+  const mx = (ax + cx) / 2, my = (ay + by) / 2, nx = -(ay - by), ny = -(cx - ax), nl = Math.hypot(nx, ny);
+  g += lab(mx + nx / nl * 22, my + ny / nl * 22, t.hyp, "end");
+  g += lab(ax - 10, ay + 18, V[0], "end") + lab(cx + 10, by - 4, V[1], "start") + lab(cx + 10, ay + 18, V[2], "start");
+  return g + "</svg>";
+}
+function ctxHtml(c){
+  let h = "";
+  c.forEach(x => {
+    if(typeof x === "string") h += '<div class="ctx">' + esc(x) + '</div>';
+    else if(x.bars) h += '<div class="ctx">' + barsSvg(x.bars) + "</div>";
+    else if(x.tri) h += '<div class="ctx">' + triSvg(x.tri) + "</div>";
+    else { h += '<div class="ctx"><table>'; x.table.forEach((r, k) => { h += "<tr>" + r.map(y => (k ? "<td>" : "<th>") + esc(y) + (k ? "</td>" : "</th>")).join("") + "</tr>"; }); h += "</table></div>"; }
+  });
+  return h;
+}
+function optsHtml(opts){ return opts.map((o, j) => '<label class="opt"><input type="radio" name="q" value="' + j + '"><span>' + L[j] + ") " + esc(o) + "</span></label>").join(""); }
+
+let cur = null, warned = false;
+function now(){ return performance.now(); }
+function renderQ(mode){
+  const i = cur.i, it = CFG.items[i], n = CFG.items.length;
+  let h = '<p class="qnum">Pregunta ' + (i + 1) + " de " + n + "</p>";
+  const c = ctxOf(i); if(c) h += ctxHtml(c);
+  const given = d => d && d.length ? '<div class="given">' + d.map(x => "<div>" + esc(x) + "</div>").join("") + "</div>" : "";
+  if(!it.steps){ h += given(it.data) + '<p class="stem">' + esc(it.stem) + "</p>" + optsHtml(it.opts); }
+  else {
+    h += '<p class="stem">' + esc(it.stem) + "</p>";
+    h += '<p class="stat">Esta pregunta tiene ' + it.steps.length + ' pasos. Cada paso trae sus datos y se califica aparte. Cuando confirmas un paso, ya no se puede cambiar.</p>';
+    it.steps.forEach((s, j) => {
+      if(j < cur.step){ const v = cur.sv[j]; h += '<div class="done-step"><p>Paso ' + (j + 1) + ": " + esc(s.q) + '</p><p>Elegiste: ' + (v < 0 ? "sin respuesta" : L[v] + ") " + esc(s.opts[v])) + "</p></div>"; }
+      else if(j === cur.step){ h += '<div class="cur-step"><p class="qnum">Paso ' + (j + 1) + " de " + it.steps.length + "</p>" + given(s.data) + '<p class="stem">Pregunta: ' + esc(s.q) + "</p>" + optsHtml(s.opts) + '<div class="row"><button id="btnStep">Confirmar paso</button></div></div>'; }
+    });
+    if(cur.step >= it.steps.length) h += '<p class="stat">Completaste todos los pasos de esta pregunta.</p>';
+  }
+  $("qbox").innerHTML = h;
+  $("qErr").textContent = "";
+  $("btnNextQ").textContent = i === n - 1 ? "Terminar y enviar" : "Siguiente pregunta";
+  const b = $("btnStep"); if(b) b.onclick = confirmStep;
+  if(mode === "step"){
+    const el = document.querySelector("#qbox .cur-step") || $("btnNextQ");
+    requestAnimationFrame(() => el.scrollIntoView({behavior: "smooth", block: "nearest"}));
+  } else window.scrollTo(0, 0);
+}
+function err(t){ $("qErr").textContent = t; $("qErr").scrollIntoView({behavior: "smooth", block: "nearest"}); }
+function picked(){ const x = document.querySelector('#qbox input[name="q"]:checked'); return x ? +x.value : -1; }
+function confirmStep(){
+  const v = picked();
+  if(v < 0){ err("Elige una opción para confirmar este paso."); return; }
+  const t = now(); cur.sv[cur.step] = v; cur.st[cur.step] = Math.round((t - cur.stepAt) / 100) / 10; cur.stepAt = t; cur.step++; warned = false; renderQ("step");
+}
+function openQ(i){ cur.i = i; cur.step = 0; cur.sv = []; cur.st = []; cur.shownAt = cur.stepAt = now(); warned = false; renderQ(); }
+$("btnNextQ").onclick = () => {
+  const i = cur.i, it = CFG.items[i], t = now();
+  if(!it.steps){
+    const v = picked();
+    if(v < 0 && !warned){ warned = true; err("No marcaste ninguna opción. Si quieres dejarla en blanco, presiona otra vez."); return; }
+    cur.resp[i] = v; cur.ts[i] = [Math.round((t - cur.shownAt) / 100) / 10];
+  } else {
+    const m = it.steps.length;
+    if(cur.step < m && !warned){ warned = true; err("Te faltan pasos por confirmar. Si sigues, quedan en blanco. Presiona otra vez para seguir."); return; }
+    for(let j = cur.step; j < m; j++){ cur.sv[j] = -1; cur.st[j] = j === cur.step ? Math.round((t - cur.stepAt) / 100) / 10 : 0; }
+    cur.resp[i] = cur.sv.slice(); cur.ts[i] = cur.st.slice();
+  }
+  cur.t[i] = Math.round((t - cur.shownAt) / 100) / 10;
+  if(i < CFG.items.length - 1){ openQ(i + 1); return; }
+  finish();
+};
+$("btnStart").onclick = () => {
+  const g = $("grupo").value, idx = $("nombre").value, man = $("nombreManual").value.trim().replace(/\s+/g, " ").toUpperCase();
+  if(idx === "manual" && man.split(" ").length < 2){ $("startErr").textContent = "Escribe tu nombre completo, con apellidos y nombres."; return; }
+  if(!g || idx === ""){ $("startErr").textContent = "Selecciona tu grupo y luego tu nombre en la lista."; return; }
+  if(!MODE.listo){ $("startErr").textContent = "La prueba todavía está cargando los datos guardados. Espera un momento y presiona otra vez."; return; }
+  use(GROUP_TEST[g]);
+  const st = idx === "manual" ? ["", man] : CFG.students[g][+idx];
+  $("startErr").textContent = "";
+  cur = {nombre: st[1], lista: st[0], grupo: g, inicio: new Date(), resp: [], t: [], ts: []};
+  show("test"); openQ(0);
+};
+function finish(){
+  const fin = new Date();
+  const rec = {
+    equipo: mem.settings.equipo, aplicacion: mem.settings.aplic, prueba: CFG.id, grupo: cur.grupo, lista: cur.lista, nombre: cur.nombre,
+    fecha: fin.toLocaleDateString("es-CO"), inicio: cur.inicio.toLocaleTimeString("es-CO"), fin: fin.toLocaleTimeString("es-CO"),
+    minutos: Math.round((fin - cur.inicio) / 600) / 100, resp: cur.resp, t: cur.t, ts: cur.ts
+  };
+  rec.uid = uidOf(rec);
+  if(MODE.online){
+    show("done");
+    const p2 = n => String(n).padStart(2, "0");
+    rec.fingerprint = FP; rec.fechaIso = fin.getFullYear() + "-" + p2(fin.getMonth() + 1) + "-" + p2(fin.getDate()) + " " + p2(fin.getHours()) + ":" + p2(fin.getMinutes());
+    const okL = writeL(ONLINE_PEND, readL(ONLINE_PEND).concat([rec])) && writeL(ONLINE_COPY, readL(ONLINE_COPY).concat([rec]));
+    MODE.hechos.push([rec.prueba, rec.grupo, rec.nombre]);
+    ultimo = rec; mandarUltimo(okL);
+    return;
+  }
+  mem.records.push(rec);
+  show("done");
+  if(MODE.srv){
+    api("POST", "api/registros", {registros: [rec]}).catch(() => { addPend(rec); alertSrv(); });
+  } else if(!save()) alertBox();
+}
+async function mandarUltimo(okL){
+  if(!ultimo) return;
+  const m = $("sendMsg"); m.textContent = "Enviando tus respuestas a la hoja del docente...";
+  try{ await enviar(ultimo); m.textContent = "Tus respuestas llegaron a la hoja del docente."; }
+  catch(e){ m.textContent = (okL ? "No hay internet en este momento. Tus respuestas quedaron guardadas en este dispositivo y se envían solas cuando vuelva la conexión. " : "No hay internet y el navegador no dejó guardar una copia. Avisa al docente antes de cerrar esta ventana. ") + "También puedes presionar Registrar de nuevo."; }
+  netMsg();
+}
+$("btnResend").onclick = () => mandarUltimo(true);
+function alertSrv(){ $("done").querySelector("p:nth-of-type(2)").textContent = "La base de datos no respondió. Las respuestas quedaron guardadas en este navegador y pasan a la base de datos la próxima vez que se abra el sistema con INICIAR_WINDOWS.bat. Avisa al docente."; }
+function alertBox(){ $("done").querySelector("p:nth-of-type(2)").textContent = "Las respuestas quedaron solo en memoria. Avisa al docente para que descargue el Excel antes de cerrar esta ventana."; }
+$("btnNext").onclick = () => { ultimo = null; $("nombreManual").value = ""; $("grupo").value = ""; fillNames(); cur = null; show("start"); };
+
+$("lnkPanel").onclick = () => {
+  $("pin").value = ""; $("pinErr").textContent = "";
+  $("pinLabel").textContent = "Clave del docente (la que está en el Code.gs)";
+  $("pinBox").classList.remove("hidden"); $("panelBody").classList.add("hidden"); show("panel");
+};
+$("btnPin").onclick = async () => {
+  const p = $("pin").value;
+  if(MODE.online){
+    $("pinErr").textContent = "Revisando la clave y trayendo los registros de la hoja...";
+    const hp = await sha(p);
+    try{
+      await remote({asignatura: ASIG[ORDER[0]], accion: "entrar", clave: p});
+      MODE.clave = p; mem.settings.h = hp; save(); await loadOnline();
+    }catch(e){
+      if(/clave/i.test(e.message)){ $("pinErr").textContent = "Clave incorrecta."; return; }
+      if(!hp || hp !== mem.settings.h){ $("pinErr").textContent = "No hay conexión con la hoja de Google (" + e.message + "). Sin internet solo se puede entrar en un dispositivo donde ya se haya entrado antes con la clave."; return; }
+      loadList(readL(ONLINE_COPY)); MODE.local = true;
+    }
+    $("pinErr").textContent = "";
+    $("pinBox").classList.add("hidden"); $("panelBody").classList.remove("hidden"); panel(); return;
+  }
+  if(!mem.settings.pin){ if(p.length < 4){ $("pinErr").textContent = "Mínimo 4 caracteres."; return; } mem.settings.pin = p; save(); }
+  else if(p !== mem.settings.pin){ $("pinErr").textContent = "Clave incorrecta."; return; }
+  $("pinBox").classList.add("hidden"); $("panelBody").classList.remove("hidden"); panel();
+};
+function panel(){
+  $("equipo").value = mem.settings.equipo; $("aplic").value = mem.settings.aplic;
+  const parts = ORDER.map(id => {
+    const R = DB[id].records, by = {}; R.forEach(r => { const k = r.aplicacion + " " + r.grupo; by[k] = (by[k] || 0) + 1; });
+    let t = TITLES[id] + ": " + R.length + (R.length === 1 ? " registro" : " registros") + (R.length ? " (" + Object.entries(by).map(([k, v]) => k + ": " + v).join("; ") + ")" : "");
+    if(DB[id].oldN) t += "; hay además " + DB[id].oldN + " registros de una versión anterior de esta prueba, guardados aparte, que no entran al Excel";
+    return t + ".";
+  });
+  $("stat").textContent = (MODE.local ? "Sin internet: se muestra solo la copia de este dispositivo. " : "Registros guardados en la hoja de Google. ") + parts.join(" ");
+  $("prev").textContent = ORDER.map(id => { use(id); return TITLES[id] + "\n" + csv(); }).join("\n\n");
+  restore();
+  $("clearBox").classList.add("hidden");
+  let d;
+  if(MODE.online){ const n = readL(ONLINE_PEND).length; d = "Versión en línea: cada prueba se guarda primero en este dispositivo (identificador " + FP + ") y luego se envía sola a la hoja de Google en Drive." + (n ? " En este dispositivo hay " + n + " pendientes por enviar." : " No hay pruebas pendientes en este dispositivo."); netMsg(); }
+  else if(MODE.srv) d = "Las respuestas se guardan solas, al terminar cada estudiante, en la base de datos de este computador: " + (MODE.ruta || "datos/base_datos.sqlite") + ".";
+  else if(MODE.fallo) d = "No hay conexión con la base de datos: la ventana del servidor (INICIAR_WINDOWS.bat) parece cerrada. Mientras tanto las respuestas se guardan en este navegador.";
+  else d = "Este archivo se abrió directamente, sin INICIAR_WINDOWS.bat. Las respuestas se guardan en este navegador, no en la base de datos. Para pasarlas a la base de datos, descarga un respaldo aquí y cárgalo en el sistema.";
+  if(mem.settings.ultimoRespaldo) d += " Último respaldo descargado: " + mem.settings.ultimoRespaldo + ".";
+  $("dbStat").textContent = d;
+}
+$("btnSave").onclick = async () => {
+  mem.settings.equipo = $("equipo").value.trim(); mem.settings.aplic = $("aplic").value; save(); sub();
+  if(MODE.online && !MODE.local){
+    try{ await remote({asignatura: ASIG[ORDER[0]], accion: "ajustes", clave: MODE.clave, aplicacion: mem.settings.aplic}); dlMsg("Ajustes guardados. La aplicación " + mem.settings.aplic + " queda para todos los que abran la prueba en línea."); loadDone(); }
+    catch(e){ dlMsg("La aplicación quedó solo en este dispositivo; no se pudo guardar en la hoja: " + e.message); }
+  }
+  panel();
+};
+$("btnRetry").onclick = () => flushPend();
+[$("btnClose1"), $("btnClose2")].forEach(b => b.onclick = () => { sub(); fillNames(); show("start"); });
+function csv(){
+  const n = CFG.items.length;
+  const head = ["equipo","aplicacion","grupo","n_lista","nombre","fecha","minutos"];
+  for(let i = 1; i <= n; i++) head.push("item" + i);
+  head.push("total_aciertos");
+  const rows = [head.join(";")];
+  mem.records.forEach(r => {
+    const c = r.resp.map((v, i) => hit(i, v));
+    rows.push([r.equipo, r.aplicacion, r.grupo, r.lista || "", r.nombre, r.fecha, String(r.minutos).replace(".", ",")].concat(r.resp.map((v, i) => ansTxt(i, v)), [c.reduce((s, x) => s + x, 0)]).join(";"));
+  });
+  return rows.join("\n");
+}
+function workbook(){
+  const n = CFG.items.length, eq = mem.settings.equipo;
+  const CH = []; for(let i = 0; i < n; i++) if(isCh(i)) CH.push(i);
+  const head = ["Equipo","Aplicación","Prueba","Grupo","N.º lista","Nombre","Fecha","Hora inicio","Hora fin","Minutos"];
+  for(let i = 1; i <= n; i++) head.push("Ítem " + i);
+  for(let i = 1; i <= n; i++) head.push("Acierto " + i);
+  head.push("Total aciertos");
+  for(let i = 1; i <= n; i++) head.push("Segundos " + i);
+  CH.forEach(i => head.push("Pasos correctos " + (i + 1) + " (de " + nSteps(i) + ")"));
+  const fmt = head.map((_, j) => (j === 9 || (j >= 10 + n && j <= 10 + 2 * n)) ? 1 : 0);
+  const num = v => (/^\d+$/.test(String(v).trim()) ? +v : v);
+  const tsec = (r, i) => (r.t && typeof r.t[i] === "number") ? r.t[i] : "";
+  const rows = mem.records.map(r => {
+    const a = r.resp.map((v, i) => ansTxt(i, v));
+    const c = r.resp.map((v, i) => hit(i, v));
+    return [num(r.equipo), r.aplicacion, r.prueba, num(r.grupo), r.lista || "", r.nombre, r.fecha, r.inicio, r.fin, r.minutos].concat(a, c, [Math.round(c.reduce((s, x) => s + x, 0) * 1000) / 1000], r.resp.map((_, i) => tsec(r, i)), CH.map(i => stepsOk(i, r.resp[i])));
+  });
+  const groups = {};
+  rows.forEach((row, k) => { const g = row[1] + "|" + row[3]; (groups[g] = groups[g] || []).push(k); });
+  const keys = Object.keys(groups).sort();
+  const res = keys.map(g => {
+    const ks = groups[g], tot = ks.map(k => rows[k][10 + 2 * n]);
+    const mean = tot.reduce((s, x) => s + x, 0) / tot.length;
+    const mins = ks.map(k => rows[k][9]);
+    return [rows[ks[0]][1], rows[ks[0]][3], ks.length, Math.round(mean * 100) / 100, Math.min(...tot), Math.max(...tot), mean / n, Math.round(mins.reduce((s, x) => s + x, 0) / mins.length * 100) / 100];
+  });
+  const items = keys.map(g => {
+    const ks = groups[g], out = [rows[ks[0]][1], rows[ks[0]][3]];
+    for(let i = 0; i < n; i++) out.push(ks.reduce((s, k) => s + rows[k][10 + n + i], 0) / ks.length);
+    return out;
+  });
+  const times = keys.map(g => {
+    const ks = groups[g], out = [rows[ks[0]][1], rows[ks[0]][3]];
+    for(let i = 0; i < n; i++){ const v = ks.map(k => mem.records[k].t ? mem.records[k].t[i] : NaN).filter(x => typeof x === "number" && isFinite(x)); out.push(v.length ? Math.round(v.reduce((s, x) => s + x, 0) / v.length * 10) / 10 : ""); }
+    return out;
+  });
+  const ihead = ["Aplicación","Grupo"]; for(let i = 1; i <= n; i++) ihead.push("Ítem " + i);
+  const title = TITLES[CFG.id] + " · Equipo " + (eq || "sin asignar");
+  const an = [];
+  keys.forEach(g => {
+    const ks = groups[g];
+    CFG.dims.forEach(dim => {
+      const cats = [];
+      CFG.meta.forEach((m, i) => { let c = cats.find(z => z.name === m[dim]); if(!c){ c = {name: m[dim], idx: []}; cats.push(c); } c.idx.push(i); });
+      cats.forEach(c => {
+        let h = 0; ks.forEach(k => c.idx.forEach(i => { h += rows[k][10 + n + i]; }));
+        an.push([rows[ks[0]][1], rows[ks[0]][3], dim, c.name, c.idx.map(i => i + 1).join(", "), ks.length, h / (ks.length * c.idx.length)]);
+      });
+    });
+  });
+  const det = [], agg = {};
+  mem.records.forEach(r => {
+    for(let i = 0; i < n; i++){
+      const m = nSteps(i), v = isCh(i) ? r.resp[i] : [r.resp[i]], key = isCh(i) ? ANS[i] : [ANS[i]], ts = (r.ts && r.ts[i]) || [];
+      for(let j = 0; j < m; j++){
+        const ok = v[j] === key[j] ? 1 : 0, sec = typeof ts[j] === "number" ? ts[j] : "";
+        det.push([num(r.equipo), r.aplicacion, num(r.grupo), r.lista || "", r.nombre, i + 1, j + 1, m, v[j] < 0 ? "" : L[v[j]], L[key[j]], ok, sec]);
+        const g = [r.aplicacion, r.grupo, i, j].join("|"); const o = agg[g] = agg[g] || {ap: r.aplicacion, gr: num(r.grupo), i, j, m, n: 0, ok: 0, s: 0, ns: 0};
+        o.n++; o.ok += ok; if(sec !== ""){ o.s += sec; o.ns++; }
+      }
+    }
+  });
+  const pas = Object.values(agg).sort((a, b) => (a.ap + a.gr).localeCompare(b.ap + b.gr) || a.i - b.i || a.j - b.j).map(o => [o.ap, o.gr, o.i + 1, CFG.meta[o.i]["Contenido"], o.j + 1, o.m, o.n, o.ok / o.n, o.ns ? Math.round(o.s / o.ns * 10) / 10 : ""]);
+  const mhead = ["Ítem", "Clave", "Pasos"].concat(CFG.dims);
+  const mrows = CFG.meta.map((m, i) => [i + 1, keyTxt(i), nSteps(i)].concat(CFG.dims.map(d => m[d])));
+  return XL.build([
+    {name: "Respuestas", widths: [8,12,18,8,9,40,11,12,12,9].concat(Array(2 * n).fill(10), [14], Array(n).fill(11), Array(CH.length).fill(14)), tables: [{name: "Respuestas", head, rows, fmt}]},
+    {name: "Resumen", title: "Resumen por grupo. " + title, widths: [14,10,12,20,10,10,17,17], tables: [{name: "ResumenGrupo", head: ["Aplicación","Grupo","Estudiantes","Promedio de aciertos","Mínimo","Máximo","Porcentaje medio","Minutos promedio"], rows: res, fmt: [0,0,0,1,1,1,2,1]}]},
+    {name: "Análisis", title: "Porcentaje de acierto por categoría. " + title, widths: [14,10,20,48,14,12,18], tables: [{name: "Analisis", head: ["Aplicación","Grupo","Dimensión","Categoría","Ítems","Estudiantes","Porcentaje de acierto"], rows: an, fmt: [0,0,0,0,0,0,2]}]},
+    {name: "Matriz de ítems", widths: [6,12,7].concat(CFG.dims.map(() => 34)), tables: [{name: "MatrizItems", head: mhead, rows: mrows, fmt: []}]},
+    {name: "Por ítem", title: "Porcentaje de acierto por ítem. " + title, widths: [14,10].concat(Array(n).fill(9)), tables: [{name: "AciertoPorItem", head: ihead, rows: items, fmt: [0,0].concat(Array(n).fill(2))}]},
+    {name: "Tiempo por ítem", title: "Segundos promedio por ítem. " + title, widths: [14,10].concat(Array(n).fill(9)), tables: [{name: "TiempoPorItem", head: ihead, rows: times, fmt: [0,0].concat(Array(n).fill(1))}]},
+    {name: "Por paso", title: "Acierto y tiempo por paso. " + title, widths: [14,10,7,44,7,8,12,14,14], tables: [{name: "PorPaso", head: ["Aplicación","Grupo","Ítem","Contenido","Paso","Pasos del ítem","Estudiantes","Porcentaje de acierto","Segundos promedio"], rows: pas, fmt: [0,0,0,0,0,0,0,2,1]}]},
+    {name: "Detalle de pasos", widths: [8,12,8,9,40,7,7,8,10,10,10,10], tables: [{name: "DetallePasos", head: ["Equipo","Aplicación","Grupo","N.º lista","Nombre","Ítem","Paso","Pasos del ítem","Opción marcada","Opción correcta","Correcto","Segundos"], rows: det, fmt: [0,0,0,0,0,0,0,0,0,0,0,0]}]}
+  ]);
+}
+function download(id){
+  use(id);
+  if(!mem.records.length){ dlMsg("No hay registros de la " + TITLES[id].charAt(0).toLowerCase() + TITLES[id].slice(1) + " para descargar en este equipo."); restore(); return; }
+  let b;
+  try{ b = workbook(); }catch(e){ dlMsg("No se pudo crear el Excel: " + e.message); restore(); return; }
+  if(window.self !== window.top){ dlMsg("Esta ventana es una vista previa y no permite descargar. Descarga el archivo HTML al computador, ábrelo con doble clic en Chrome o Edge y repite la descarga desde allí."); }
+  else dlMsg("Excel generado. Si no aparece en la carpeta Descargas, revisa que el navegador no haya bloqueado la descarga (ícono en la barra de direcciones).");
+  const a = document.createElement("a");
+  const d = new Date();
+  a.href = URL.createObjectURL(b);
+  a.download = CFG.id + "_" + mem.settings.aplic.toLowerCase() + "_equipo" + (mem.settings.equipo || "X") + "_" + d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0") + "_" + String(d.getHours()).padStart(2, "0") + String(d.getMinutes()).padStart(2, "0") + ".xlsx";
+  document.body.appendChild(a); a.click(); a.remove();
+  restore();
+}
+ORDER.forEach(id => { $("btnXl_" + id).onclick = () => download(id); });
+function dlMsg(t){ const m = $("dlMsg"); m.textContent = t; m.classList.remove("hidden"); }
+$("btnClear").onclick = () => { $("clearBox").classList.remove("hidden"); $("clearTxt").value = ""; };
+$("btnClear2").onclick = async () => {
+  if($("clearTxt").value.trim().toUpperCase() !== "BORRAR") return;
+  if(MODE.online){ writeL(ONLINE_PEND, []); writeL(ONLINE_COPY, []); if(MODE.local) loadList([]); netMsg(); panel(); return; }
+  if(MODE.srv){
+    try{ await api("DELETE", "api/registros", {confirmar: "BORRAR"}); await loadSrv(); }
+    catch(e){ dlMsg("No se pudo borrar en la base de datos: " + e.message); return; }
+  } else { ORDER.forEach(id => { DB[id].records = []; }); restore(); save(); }
+  panel();
+};
+function stamp(d){ return d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0") + "_" + String(d.getHours()).padStart(2, "0") + String(d.getMinutes()).padStart(2, "0"); }
+$("btnBk").onclick = () => {
+  const d = new Date(), regs = allRecs();
+  const pack = {tipo: "respaldo_pruebas_IETAL", version: 1, creado: d.toISOString(), equipo: mem.settings.equipo, aplicacion: mem.settings.aplic, total: regs.length, registros: regs};
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(pack, null, 1)], {type: "application/json"}));
+  a.download = "respaldo_pruebas_IETAL_equipo" + (mem.settings.equipo || "X") + "_" + stamp(d) + ".json";
+  document.body.appendChild(a); a.click(); a.remove();
+  mem.settings.ultimoRespaldo = d.toLocaleDateString("es-CO") + " " + d.toLocaleTimeString("es-CO") + " (" + regs.length + " registros)";
+  save(); panel();
+  bkMsg("Respaldo descargado con " + regs.length + " registros. Guárdalo en una USB o en la nube." + (window.self !== window.top ? " Esta ventana es una vista previa y puede bloquear la descarga." : ""));
+};
+function bkMsg(t){ const m = $("bkMsg"); m.textContent = t; m.classList.remove("hidden"); }
+$("bkFiles").onchange = async e => {
+  const files = Array.from(e.target.files); e.target.value = "";
+  if(!files.length) return;
+  const log = []; let regs = [];
+  for(const f of files){
+    try{
+      const j = JSON.parse(await f.text()), arr = Array.isArray(j) ? j : j && j.registros;
+      if(!Array.isArray(arr)) throw new Error("no es un respaldo de estas pruebas");
+      regs = regs.concat(arr); log.push(f.name + ": " + arr.length + " registros");
+    }catch(err){ log.push(f.name + ": no se pudo leer (" + err.message + ")"); }
+  }
+  let add = 0, dup = 0, bad = 0;
+  if(MODE.online){
+    if(MODE.local){ bkMsg("Sin internet no se pueden subir respaldos a la hoja. Intenta cuando haya conexión."); return; }
+    const ok = [];
+    regs.forEach(r => { const id = r && r.prueba; if(TESTS[id]){ use(id); if(validRec(r)){ r.uid = uidOf(r); ok.push(r); return; } } bad++; });
+    restore();
+    for(let k = 0; k < ok.length; k++){
+      bkMsg("Subiendo a la hoja: " + (k + 1) + " de " + ok.length + "...");
+      try{ const res = await remote(parametros(ok[k])); if(res.duplicado) dup++; else add++; }
+      catch(err){ bkMsg("Se detuvo en el registro " + (k + 1) + " de " + ok.length + ": " + err.message + ". Agregados: " + add + ". Puedes cargar el mismo respaldo otra vez sin que se dupliquen."); try{ await loadOnline(); }catch(e){} panel(); return; }
+    }
+    try{ await loadOnline(); }catch(e){}
+  } else if(MODE.srv){
+    const ok = [];
+    regs.forEach(r => { const id = r && r.prueba; if(TESTS[id]){ use(id); if(validRec(r)){ r.uid = uidOf(r); ok.push(r); return; } } bad++; });
+    try{ const res = await api("POST", "api/registros", {registros: ok}); add = res.agregados; dup = res.repetidos; await loadSrv(); }
+    catch(err){ restore(); bkMsg("No se pudo guardar en la base de datos: " + err.message + ". No se agregó nada."); return; }
+  } else {
+    regs.forEach(r => { const k = addRec(r); if(k === "add") add++; else if(k === "dup") dup++; else bad++; });
+    restore();
+    if(!save()){ bkMsg("Se leyeron los respaldos, pero el navegador no dejó guardarlos. Descarga el Excel antes de cerrar esta ventana."); panel(); return; }
+  }
+  panel(); fillNames();
+  bkMsg("Archivos leídos: " + log.join("; ") + ". Registros agregados: " + add + ". Ya estaban: " + dup + ". No válidos: " + bad + ".");
+};
+
+function fillNames(){
+  const g = $("grupo").value, sel = $("nombre");
+  restore();
+  $("nombreManual").classList.add("hidden"); $("nombreManual").value = "";
+  if(!g){ $("ttl").textContent = T_GEN; $("which").textContent = ""; sel.innerHTML = '<option value="">Primero selecciona tu grupo</option>'; sel.disabled = true; return; }
+  $("ttl").textContent = TITLES[CFG.id];
+  $("which").textContent = "Vas a presentar la " + TITLES[CFG.id].charAt(0).toLowerCase() + TITLES[CFG.id].slice(1) + ".";
+  const done = new Set(MODE.hechos.filter(h => h[0] === CFG.id && h[1] === g).map(h => h[2]));
+  sel.innerHTML = '<option value="">Selecciona tu nombre</option>' + CFG.students[g].map((s, i) => '<option value="' + i + '">' + s[0] + ". " + esc(s[1]) + (done.has(s[1]) ? " (ya respondió)" : "") + "</option>").join("");
+  sel.innerHTML += '<option value="manual">Mi nombre no aparece en la lista</option>';
+  sel.disabled = false;
+}
+$("nombre").onchange = () => { const m = $("nombre").value === "manual"; $("nombreManual").classList.toggle("hidden", !m); if(m) $("nombreManual").focus(); };
+$("grupo").onchange = fillNames;
+load(); sub(); fillNames(); init();
+</script>
+</body>
+</html>
